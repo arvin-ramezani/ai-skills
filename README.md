@@ -10,6 +10,18 @@ Creates requirement-driven architecture and stack recommendations. It prefers th
 
 Location: [`skills/software-architecture-advisor`](skills/software-architecture-advisor)
 
+### Documentation Strategy Engineer
+
+Analyzes project structure and documentation, then designs or improves a documentation strategy optimized for AI agent fluency and maintainability. Supports analyze, propose, bootstrap, audit, and sync workflows.
+
+Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
+
+### Test Engineering
+
+Designs, implements, reviews, and maintains lean risk-based automated test suites. Adapts to the repository's language, framework, architecture, and tooling; optimizes for confidence rather than test count.
+
+Location: [`skills/test-engineering`](skills/test-engineering)
+
 ## Repository layout
 
 This repository uses `skills/<skill-name>/` as its distribution layout. Each skill is a portable package containing `SKILL.md` and its direct reference files.
@@ -26,8 +38,9 @@ Cursor does not automatically discover this repository's `skills/` directory. In
 Local — Windows PowerShell:
 
 ```powershell
-$source = Join-Path (Get-Location) "skills\software-architecture-advisor"
-$destination = "D:\path\to\project\.cursor\skills\software-architecture-advisor"
+$skill = "software-architecture-advisor"  # or doc-strategy-engineer, test-engineering
+$source = Join-Path (Get-Location) "skills\$skill"
+$destination = "D:\path\to\project\.cursor\skills\$skill"
 
 New-Item -ItemType Directory -Force -Path (Split-Path $destination)
 Copy-Item -Recurse -Force $source $destination
@@ -40,8 +53,9 @@ Replace the paths with the repository clone and target project locations.
 Local — Windows PowerShell:
 
 ```powershell
-$source = Join-Path (Get-Location) "skills\software-architecture-advisor"
-$destination = Join-Path $HOME ".cursor\skills\software-architecture-advisor"
+$skill = "software-architecture-advisor"  # or doc-strategy-engineer, test-engineering
+$source = Join-Path (Get-Location) "skills\$skill"
+$destination = Join-Path $HOME ".cursor\skills\$skill"
 
 New-Item -ItemType Directory -Force -Path (Split-Path $destination)
 Copy-Item -Recurse -Force $source $destination
@@ -59,6 +73,16 @@ skills/
     PROJECT-CONTEXT.md
     DECISION-FRAMEWORK.md
     OUTPUT-TEMPLATE.md
+  doc-strategy-engineer/
+    SKILL.md
+    README.md
+    references/
+    workflows/
+    templates/
+  test-engineering/
+    SKILL.md
+    agents/
+    assets/
 docs/
   improvements/
 ```
