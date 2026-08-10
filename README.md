@@ -8,14 +8,25 @@ Reusable AI agent skills, decision frameworks, and improvement roadmaps.
 
 Creates requirement-driven architecture and stack recommendations. It prefers the simplest viable design, evaluates technology against project constraints, explains trade-offs, applies SOLID pragmatically, and produces concise Architecture Decision Records when needed.
 
-Location: [`.cursor/skills/software-architecture-advisor`](.cursor/skills/software-architecture-advisor)
+Location: [`skills/software-architecture-advisor`](skills/software-architecture-advisor)
+
+## Repository layout
+
+This repository uses `skills/<skill-name>/` as its distribution layout. Each skill is a portable package containing `SKILL.md` and its direct reference files.
+
+The neutral `skills/` directory is preferable for a public catalog because `.cursor/skills/` is an installation and automatic-discovery location. Keeping source packages under `skills/` avoids activating every catalog skill when this repository is opened and leaves room for compatibility with other Agent Skills consumers.
+
+Cursor does not automatically discover this repository's `skills/` directory. Install a skill by copying its complete directory to one of Cursor's discovery locations:
+
+- Project: `<project>/.cursor/skills/<skill-name>/`
+- Personal: `~/.cursor/skills/<skill-name>/`
 
 ## Install for one Cursor project
 
 Local — Windows PowerShell:
 
 ```powershell
-$source = Join-Path (Get-Location) ".cursor\skills\software-architecture-advisor"
+$source = Join-Path (Get-Location) "skills\software-architecture-advisor"
 $destination = "D:\path\to\project\.cursor\skills\software-architecture-advisor"
 
 New-Item -ItemType Directory -Force -Path (Split-Path $destination)
@@ -29,7 +40,7 @@ Replace the paths with the repository clone and target project locations.
 Local — Windows PowerShell:
 
 ```powershell
-$source = Join-Path (Get-Location) ".cursor\skills\software-architecture-advisor"
+$source = Join-Path (Get-Location) "skills\software-architecture-advisor"
 $destination = Join-Path $HOME ".cursor\skills\software-architecture-advisor"
 
 New-Item -ItemType Directory -Force -Path (Split-Path $destination)
@@ -41,7 +52,7 @@ Personal skills are available across projects. Project skills can be committed w
 ## Repository structure
 
 ```text
-.cursor/skills/
+skills/
   software-architecture-advisor/
     SKILL.md
     PROFILE.md
