@@ -33,12 +33,13 @@ Use this checklist when analyzing a project's documentation. A "fluent" document
 ## AI-Specific Optimizations
 - [ ] `AGENTS.md` does not contain project-specific business rules (those belong in `docs/`)
 - [ ] Scoped agent rules contain conventions, not generic advice
+- [ ] Engineering docs are in English (Persian reserved for conversation / optional customer copy)
 - [ ] Mermaid diagrams are used over image files (AI can read Mermaid)
 - [ ] No password/secrets in docs (obvious but common)
 - [ ] Docs are in Markdown (AI-native format)
 
 ## Scoring
-- **20–22 checks:** Excellent. Minor tweaks only.
-- **15–19 checks:** Good. Targeted improvements needed.
-- **10–14 checks:** Fragmented. Strategy revision recommended.
-- **<10 checks:** Undocumented. Use BOOTSTRAP workflow.
+- **21–23 checks:** Excellent. Minor tweaks only.
+- **16–20 checks:** Good. Targeted improvements needed.
+- **11–15 checks:** Fragmented. Strategy revision recommended.
+- **<11 checks:** Undocumented. Use BOOTSTRAP workflow.

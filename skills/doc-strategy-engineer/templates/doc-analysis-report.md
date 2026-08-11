@@ -63,7 +63,7 @@
 
 ## AI-Fluency Score
 
-{{score}} / 22 — {{rating}}
+{{score}} / 23 — {{rating}}
 
 See `references/ai-fluency-checklist.md` for full checklist.
 

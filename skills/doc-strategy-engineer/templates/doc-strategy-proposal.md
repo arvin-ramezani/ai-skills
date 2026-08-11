@@ -87,7 +87,7 @@ Tests (relative path)
 ## Expected Outcomes
 
 After migration:
-- AI-Fluency Score: {{predicted}} / 22
+- AI-Fluency Score: {{predicted}} / 23
 - Time for new dev to understand auth flow: {{estimate}}
 - Time for AI to locate domain context: {{estimate}}
 

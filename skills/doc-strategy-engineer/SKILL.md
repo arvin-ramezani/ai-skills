@@ -37,6 +37,7 @@ This skill is a **strategist**, not a silent writer. It reports findings, asks c
 3. **Source of Truth** — Implementation > Schema > Tests > Docs. Docs explain; code proves.
 4. **Uncertainty Preservation** — When evidence is missing, say "Unknown" or "Inferred." Never invent business reasons.
 5. **Report Before Edit** — For existing docs, always produce a report and proposal first. Apply edits only after explicit approval.
+6. **Language** — Engineering docs (architecture, ADRs, feature docs, ops, agent rules, code comments meant for engineers) in **English**. Conversation with the user in **Persian**. Customer-facing copy may be Persian when requested.
 
 ---
 
@@ -124,7 +125,7 @@ docs/
 ```
 
 Also create scoped agent rules for:
-- Docs conventions (how to write docs for this project)
+- Docs conventions (how to write docs for this project), including the Language principle above
 - Doc sync check (reminder to check doc impact on changes)
 
 **Constraints:**

@@ -31,6 +31,7 @@ description: Documentation conventions for this project
 glob: "docs/**/*.md"
 ---
 - Follow the documentation architecture defined in docs/00-index.md
+- Engineering docs in English; chat with the user in Persian; customer-facing copy may be Persian when requested
 - Link to implementation files using relative paths
 - Keep docs under 300 lines; split if larger
 - Tag uncertain claims as [Inferred] or [Unknown]
