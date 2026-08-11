@@ -33,7 +33,7 @@ Use this checklist when analyzing a project's documentation. A "fluent" document
 ## AI-Specific Optimizations
 - [ ] `AGENTS.md` does not contain project-specific business rules (those belong in `docs/`)
 - [ ] Scoped agent rules contain conventions, not generic advice
-- [ ] Engineering docs and default conversation are in English (Persian only for optional customer copy or when requested)
+- [ ] Engineering docs and default conversation are in English; Persian human FAs / optional customer copy when needed
 - [ ] Mermaid diagrams are used over image files (AI can read Mermaid)
 - [ ] No password/secrets in docs (obvious but common)
 - [ ] Docs are in Markdown (AI-native format)
