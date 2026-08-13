@@ -1,0 +1,14 @@
+interface:
+  display_name: Content Strategy & Content Architecture
+  short_description: Persian-first content and SEO architecture
+  default_prompt: Use $content-strategy-architecture to discover and design an Iran-first,
+    Persian-native content architecture before UX/UI design.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

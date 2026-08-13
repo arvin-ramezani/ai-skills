@@ -12,9 +12,15 @@ Location: [`skills/software-architecture-advisor`](skills/software-architecture-
 
 ### Documentation Strategy Engineer
 
-Analyzes project structure and documentation, then designs or improves a documentation strategy optimized for AI agent fluency and maintainability. Supports analyze, propose, bootstrap, audit, and sync workflows.
+Designs, audits, bootstraps, and maintains context-efficient project documentation for AI-assisted development. Supports feature documentation, canonical placement, FA docs, and documentation architecture for monorepos and greenfield projects.
 
 Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
+
+### Content Strategy & Content Architecture
+
+Designs evidence-led content strategy, information architecture, page structure, SEO, localization, and UX handoffs before visual design. Defaults to Iranian market, Persian-native, RTL-first context unless the user states otherwise.
+
+Location: [`skills/content-strategy-architecture`](skills/content-strategy-architecture)
 
 ### Test Engineering
 
@@ -38,7 +44,7 @@ Cursor does not automatically discover this repository's `skills/` directory. In
 Local — Windows PowerShell:
 
 ```powershell
-$skill = "software-architecture-advisor"  # or doc-strategy-engineer, test-engineering
+$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, test-engineering
 $source = Join-Path (Get-Location) "skills\$skill"
 $destination = "D:\path\to\project\.cursor\skills\$skill"
 
@@ -53,7 +59,7 @@ Replace the paths with the repository clone and target project locations.
 Local — Windows PowerShell:
 
 ```powershell
-$skill = "software-architecture-advisor"  # or doc-strategy-engineer, test-engineering
+$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, test-engineering
 $source = Join-Path (Get-Location) "skills\$skill"
 $destination = Join-Path $HOME ".cursor\skills\$skill"
 
@@ -75,10 +81,14 @@ skills/
     OUTPUT-TEMPLATE.md
   doc-strategy-engineer/
     SKILL.md
-    README.md
+    agents/
     references/
-    workflows/
     templates/
+  content-strategy-architecture/
+    SKILL.md
+    agents/
+    assets/
+    references/
   test-engineering/
     SKILL.md
     agents/
