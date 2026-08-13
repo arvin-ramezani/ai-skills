@@ -1,0 +1,4 @@
+interface:
+  display_name: "Documentation Strategy Engineer"
+  short_description: "Design AI-efficient project documentation"
+  default_prompt: "Use $doc-strategy-engineer to design or improve this project's context-efficient documentation system."
