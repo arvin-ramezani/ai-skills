@@ -1,0 +1,13 @@
+interface:
+  display_name: React 19
+  short_description: Components, JSX, Hooks, Compiler-aware React 19 patterns
+  default_prompt: Use $react-19 to build, refactor, or review React 19 components,
+    JSX, Hooks, forms, and Compiler-aware patterns. Follow MUST rules for
+    conditionals and memoization; defer Next.js boundaries to the framework skill.
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

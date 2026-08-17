@@ -22,6 +22,12 @@ Designs evidence-led content strategy, information architecture, page structure,
 
 Location: [`skills/content-strategy-architecture`](skills/content-strategy-architecture)
 
+### React 19
+
+Build, refactor, and review React 19.x TypeScript with React Compiler assumed. Thin MUST/NEVER control surface for JSX, Hooks, forms, Suspense, and performance; deep topics live in progressive references. Defer Next.js boundaries to the framework skill and project `AGENTS.md`.
+
+Location: [`skills/react-19`](skills/react-19)
+
 ### Test Engineering
 
 Designs, implements, reviews, and maintains lean risk-based automated test suites. Adapts to the repository's language, framework, architecture, and tooling; optimizes for confidence rather than test count.
@@ -44,7 +50,7 @@ Cursor does not automatically discover this repository's `skills/` directory. In
 Local — Windows PowerShell:
 
 ```powershell
-$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, test-engineering
+$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, react-19, test-engineering
 $source = Join-Path (Get-Location) "skills\$skill"
 $destination = "D:\path\to\project\.cursor\skills\$skill"
 
@@ -59,7 +65,7 @@ Replace the paths with the repository clone and target project locations.
 Local — Windows PowerShell:
 
 ```powershell
-$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, test-engineering
+$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, react-19, test-engineering
 $source = Join-Path (Get-Location) "skills\$skill"
 $destination = Join-Path $HOME ".cursor\skills\$skill"
 
@@ -88,6 +94,10 @@ skills/
     SKILL.md
     agents/
     assets/
+    references/
+  react-19/
+    SKILL.md
+    agents/
     references/
   test-engineering/
     SKILL.md
