@@ -1,6 +1,6 @@
 ---
 name: doc-strategy-engineer
-description: Design, audit, bootstrap, retrofit, and maintain context-efficient project documentation for AI-assisted software development. Use when documenting a feature or behavior, choosing canonical document placement, creating or restructuring a docs system, improving AGENTS.md or tool-adapter routing on already-started projects, fixing undiscoverable existing docs, onboarding to an undocumented repository, resolving documentation conflicts or drift, planning documentation for a monorepo, or syncing docs after code changes. Also use when the user asks for AI-readable documentation architecture, Feature Analysis (FA), documentation context budgets, or Cursor/coding-agent documentation strategy. Do not use for grammar-only edits with no structural, authority, or placement impact.
+description: Design, audit, bootstrap, retrofit, and maintain context-efficient project documentation and optional long-term AI-agent memory for software development. Use when documenting a feature or behavior, choosing canonical document placement, creating or restructuring a docs system, improving AGENTS.md or tool-adapter routing on already-started projects, fixing undiscoverable existing docs, onboarding to an undocumented repository, adding cross-session coding-agent memory, capturing decisions or lessons from agent sessions, resolving documentation conflicts or drift, planning documentation for a monorepo, or syncing docs after code changes. Also use for AI-readable documentation architecture, Feature Analysis (FA), documentation context budgets, or Cursor/coding-agent documentation and memory strategy. Do not use for grammar-only edits with no structural, authority, placement, or memory impact.
 ---
 
 # Documentation Strategy Engineer
@@ -15,6 +15,7 @@ Choose one primary mode. Combine modes only when the request clearly requires it
 | --- | --- | --- |
 | Document a feature or phase | `document-feature` | Write requested docs |
 | Improve docs on an already-started project | `retrofit` | Patch routing before rewrite |
+| Add or improve cross-session AI-agent memory | `memory-layer` | Write after the memory decision is confirmed |
 | Assess documentation health | `analyze` | Report only |
 | Design a better architecture | `propose` | Report only |
 | Create an initial docs system | `bootstrap` | Write after scope is clear |
@@ -24,6 +25,20 @@ Choose one primary mode. Combine modes only when the request clearly requires it
 If the prompt combines feature work with documentation, use `document-feature`; do not substitute a general analysis report.
 
 On repositories that already have `AGENTS.md`, adapters, indexes, or docs, prefer **`retrofit`** (audit → fix routing) when the problem is discoverability or missing high-frequency pointers—not an empty tree. Do not jump to broad rewrite, `bootstrap`, or unscoped `document-feature` until routing gaps for **existing** facts are addressed. Details: [references/retrofit-routing.md](references/retrofit-routing.md).
+
+## Run the memory checkpoint
+
+Never silently forget the memory option during architecture-level documentation work.
+
+Before `bootstrap`, `retrofit`, or `propose`:
+
+1. Look for an existing memory decision in the user's request, `AGENTS.md`, the documentation index, or the maintenance policy.
+2. Treat `enabled`, `disabled`, and `deferred` as valid decisions. Preserve an existing decision unless the user asks to revisit it or the project scope materially changes.
+3. If no decision exists and the work will create or materially change the documentation system, ask one concise question before writing: **“Should this project include a persistent AI memory layer for cross-session decisions, lessons, and handoffs? (Yes / Not now)”**
+4. Record the answer in the maintenance policy or nearest canonical documentation index so later agents do not ask repeatedly.
+5. If the task is report-only (`analyze` or `audit`), do not block the report. State whether memory is enabled, disabled, deferred, or undecided and recommend the next action.
+
+Do not interrupt a small `document-feature` or routine `sync` task with the question unless memory is explicitly requested, the existing memory decision requires action, or the task is also changing the documentation architecture.
 
 ## Establish the context envelope
 
@@ -93,6 +108,8 @@ Use these defaults unless sound project conventions say otherwise:
 | Architectural decisions and rationale | ADR/decision record |
 | Reusable cross-project procedure | Skill |
 | Mechanical enforcement | Tests, schema, lint, hooks, or CI |
+| Cross-session agent memory | Separate scoped memory area with a compact index; never the canonical contract |
+| Raw session/conversation evidence | Temporary storage with an expiry or summarization trigger |
 | Temporary research, plan, or progress | Explicit temporary/active artifact |
 
 Do not duplicate complete rules across layers. Keep `AGENTS.md` focused on high-frequency routing, constraints, and commands; keep business knowledge and detailed explanations in discoverable project docs. Thin adapters must **name** high-frequency conventions and link to owners—they must not only deep-link into large docs without stating what agents should load when.
@@ -108,6 +125,18 @@ For already-started projects. Full procedure: [references/retrofit-routing.md](r
 3. Patch thin adapters and indexes so high-frequency conventions are named and routed; do not rewrite deep docs first.
 4. Only then run `document-feature`, content expansion, or `propose` restructuring for remaining gaps.
 5. Report routing patches separately from new content needs.
+6. Run the memory checkpoint; when enabled, add the memory layer only after canonical routing and authority are clear.
+
+### `memory-layer`
+
+Use only after the user enables memory or explicitly requests it. Read [references/agent-memory.md](references/agent-memory.md) before designing or changing the layer.
+
+1. Reuse the project's existing AI/context directory when sound; otherwise choose the smallest scoped location that does not compete with canonical `docs/`.
+2. Create a compact memory index, summarized session records, and a promotion queue using [templates/session-memory.md](templates/session-memory.md). Do not persist complete conversations by default.
+3. Route agents to load the memory index at session start and retrieve only summaries relevant to the current task.
+4. At compaction or session end, capture outcomes, decisions, lessons, validation, open work, and next steps; exclude secrets and raw noise.
+5. Validate candidate facts before promoting stable requirements, decisions, runbooks, or enforcement into their canonical project layers.
+6. Define expiry, archive, deduplication, contradiction, and health-check rules. Memory must be replaceable evidence, not a second source of truth.
 
 ### `document-feature`
 
@@ -130,20 +159,22 @@ For already-started projects. Full procedure: [references/retrofit-routing.md](r
 1. Establish project size, lifetime, ownership boundaries, repository shape, change rate, and agent usage.
 2. Compare centralized, code-adjacent, and hybrid layouts using [references/document-architecture.md](references/document-architecture.md).
 3. Define routing, canonical ownership, document budgets, metadata policy, temporary-artifact lifecycle, and migration order. Prefer routing fixes for undiscoverable-existing facts before tree moves.
-4. Produce [templates/strategy-proposal.md](templates/strategy-proposal.md). Do not apply it without authorization.
+4. Run the memory checkpoint and include the resulting `enabled`, `disabled`, `deferred`, or `undecided` state in the proposal.
+5. Produce [templates/strategy-proposal.md](templates/strategy-proposal.md). Do not apply it without authorization.
 
 ### `bootstrap`
 
 1. Gather enough product, repository, audience, and lifecycle context to avoid inventing structure. Ask only for missing choices that materially change the design.
-2. Choose the smallest architecture that supports current needs. Create semantic directories only when they have real content.
-3. Create a compact index, minimum core docs, feature/decision templates only if useful, maintenance policy, and a short `AGENTS.md` route.
-4. Mark unknown facts; do not fill templates with invented product content.
-5. Validate discoverability from `AGENTS.md → index → relevant doc` in no more than two routing hops.
-6. If a usable docs or routing system already exists, switch to `retrofit` instead of scaffolding a parallel tree.
+2. Run the memory checkpoint before choosing the final structure.
+3. Choose the smallest architecture that supports current needs. Create semantic directories only when they have real content.
+4. Create a compact index, minimum core docs, feature/decision templates only if useful, maintenance policy, and a short `AGENTS.md` route. If memory is enabled, also create only the minimum memory surfaces justified by [references/agent-memory.md](references/agent-memory.md).
+5. Mark unknown facts; do not fill templates with invented product content.
+6. Validate discoverability from `AGENTS.md → index → relevant doc` in no more than two routing hops.
+7. If a usable docs or routing system already exists, switch to `retrofit` instead of scaffolding a parallel tree.
 
 ### `audit`
 
-Evaluate the implemented strategy against [references/health-and-maintenance.md](references/health-and-maintenance.md). Classify findings as Critical, High, Medium, Low, or Informational. Include split/merge candidates, unused documents, repeated retrieval pairs, stale temporary artifacts, misplaced rules, and **existing facts that fail two-hop discoverability**. When routing gaps dominate, recommend `retrofit` before rewrite.
+Evaluate the implemented strategy against [references/health-and-maintenance.md](references/health-and-maintenance.md). Classify findings as Critical, High, Medium, Low, or Informational. Include split/merge candidates, unused documents, repeated retrieval pairs, stale temporary artifacts, misplaced rules, and **existing facts that fail two-hop discoverability**. Report the memory decision. If memory is enabled, audit it with [references/agent-memory.md](references/agent-memory.md). When routing gaps dominate, recommend `retrofit` before rewrite.
 
 ### `sync`
 
@@ -151,7 +182,8 @@ Evaluate the implemented strategy against [references/health-and-maintenance.md]
 2. Map changes to public behavior, contracts, decisions, operations, and links.
 3. Propose `update`, `create`, `archive/delete`, or `no action` for each impacted doc.
 4. Prefer `no action` when meaning and contracts did not change.
-5. Apply small requested updates; ask before deletion, broad restructuring, or unresolved contract choices.
+5. If memory is enabled, promote validated durable findings to canonical docs and keep session summaries operational rather than authoritative.
+6. Apply small requested updates; ask before deletion, broad restructuring, or unresolved contract choices.
 
 ## Control document growth
 
@@ -192,7 +224,8 @@ Before finishing a write:
 - verify metadata and budgets match actual read frequency;
 - search for obvious duplication and contradictions in the affected scope;
 - verify temporary artifacts have an owner or cleanup condition;
+- verify the memory decision is recorded for architecture-level work;
+- when memory is enabled, verify summaries are selectively routed, secrets are absent, contradictions are visible, and stable facts are promoted to canonical owners;
 - report files changed, checks performed, unvalidated areas, conflicts, and remaining unknowns.
 
 Use `templates/maintenance-policy.md` when a project needs an explicit ongoing policy. Keep final reports concise and lead with the outcome.
-

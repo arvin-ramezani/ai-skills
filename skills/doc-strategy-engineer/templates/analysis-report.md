@@ -19,6 +19,7 @@
 | Repository shape | {{single app / monorepo / services}} |
 | Canonical instruction entry | {{path or missing}} |
 | Documentation entry | {{path or missing}} |
+| AI-agent memory | {{enabled / disabled / deferred / undecided; path if enabled}} |
 | Scoped areas inspected | {{...}} |
 | Evidence inspected | {{docs, decisions, config, schema, code, tests}} |
 | Excluded scope | {{...}} |
@@ -58,4 +59,3 @@
 ## Questions that block a decision
 
 1. {{Ask only questions that materially change placement, authority, or architecture.}}
-

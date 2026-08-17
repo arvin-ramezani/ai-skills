@@ -1,9 +1,11 @@
 interface:
-  display_name: "Documentation Strategy Engineer"
-  short_description: "AI-efficient docs; retrofit routing on started projects"
-  default_prompt: "Use $doc-strategy-engineer to improve this project's documentation.
-    On an already-started repo, audit and patch AGENTS/adapter/index routing before
-    rewriting or adding deep docs."
+  display_name: Documentation Strategy Engineer
+  short_description: AI-efficient project docs and optional agent memory
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+  default_prompt: Use $doc-strategy-engineer to improve this project's documentation,
+    preserve retrofit-first routing on started projects, and ask once whether persistent
+    cross-session AI-agent memory should be enabled when no decision exists.
 policy:
   products:
   - chatgpt

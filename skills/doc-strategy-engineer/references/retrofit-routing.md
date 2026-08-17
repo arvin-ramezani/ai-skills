@@ -29,6 +29,7 @@ inventory → 2-hop gaps → thin adapter / index patches → then feature docs 
    within two hops (one extra scoped index allowed in large monorepos). Mark each gap: fact location, expected entry point, why the hop fails (missing link, wrong layer, buried in a long file, no mention of the convention).
 3. **Patch routing before rewrite** — add or tighten thin adapters and indexes so they **name** high-frequency conventions and point to the canonical owner. Do not paste full rule bodies into adapters.
 4. **Only then** run `document-feature`, broad `propose` migration, or large doc rewrites for remaining content gaps.
+5. Run the memory checkpoint. If enabled, add memory only after canonical routing and authority are clear; if disabled or deferred, record that decision so later agents do not ask repeatedly.
 
 If the user asked only for a feature FA, still run a **scoped** routing check for that feature's domain: if the FA would be unreachable from the nearest adapter/index, fix that route in the same change (or ask if mutation is disallowed).
 

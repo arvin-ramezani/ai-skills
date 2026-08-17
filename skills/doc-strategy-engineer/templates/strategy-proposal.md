@@ -28,6 +28,15 @@
 - App/package indexes: {{only if needed}}
 - Expected retrieval path: {{entry → index → scoped doc → evidence}}
 
+## AI-agent memory decision
+
+- Status: {{enabled / disabled / deferred / undecided}}
+- Evidence or user decision: {{...}}
+- Revisit trigger: {{...}}
+- If enabled: {{memory index, session summaries, promotion queue, retrieval and expiry rules}}
+
+Memory remains operational evidence and must not duplicate or override canonical project knowledge.
+
 ## Context budgets
 
 | Document type | Target | Soft max | Split/merge rule |
@@ -61,4 +70,3 @@
 ## Decisions required
 
 - [ ] {{Only material choices that require user/owner approval}}
-

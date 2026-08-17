@@ -12,7 +12,7 @@ Location: [`skills/software-architecture-advisor`](skills/software-architecture-
 
 ### Documentation Strategy Engineer
 
-Designs, audits, bootstraps, and maintains context-efficient project documentation for AI-assisted development. Supports feature documentation, canonical placement, FA docs, and documentation architecture for monorepos and greenfield projects.
+Designs, audits, bootstraps, retrofits, and maintains context-efficient project documentation for AI-assisted development. Supports feature documentation, routing fixes on started projects, optional cross-session agent memory, FA docs, and documentation architecture for monorepos and greenfield projects.
 
 Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
 
@@ -88,6 +88,7 @@ skills/
   doc-strategy-engineer/
     SKILL.md
     agents/
+    assets/
     references/
     templates/
   content-strategy-architecture/

@@ -85,6 +85,15 @@ Do not assign urgency by document length alone.
 - [ ] Verification cadence matches change rate and risk.
 - [ ] Secrets and real credentials are absent.
 
+### AI-agent memory (when enabled)
+
+- [ ] The memory decision and canonical memory index are discoverable.
+- [ ] Session summaries are scoped, concise, and selectively retrieved.
+- [ ] Memory is labeled operational evidence rather than accepted contract.
+- [ ] Stable validated findings are promoted to canonical docs or enforcement.
+- [ ] Stale, duplicated, contradicted, and superseded memories expire or link to their replacement.
+- [ ] Raw conversations, secrets, credentials, and irrelevant tool output are not retained.
+
 Report pass/fail/not-applicable counts by category rather than forcing a universal numeric grade. A score can summarize, but findings and risk remain primary.
 
 ## Drift triggers
@@ -127,4 +136,3 @@ Also flag:
 | Bug exposed a missing or misleading contract | Update docs and add enforcement evidence |
 | Temporary research produced a stable accepted result | Promote the result; discard raw noise |
 | Old feature removed | Remove current routing; archive only when a real historical need exists |
-

@@ -21,6 +21,7 @@ Use this reference for `propose`, `bootstrap`, monorepo work, or any restructuri
 | Skill | Reusable procedure and expert workflow | Project-specific facts that change with one repository |
 | Project docs | Product, domain, feature, architecture, contracts, decisions, operations | Generic workflow already supplied by a skill |
 | Enforcement | Tests, schema, types, lint, hooks, CI | Prose-only rules that must be mechanically guaranteed |
+| Agent memory | Cross-session summaries, lessons, handoffs, promotion candidates | Accepted contracts, full conversation history, duplicated project docs |
 | Temporary artifacts | Research, active plan, progress, handoff | Stable facts without an expiry/promotion decision |
 
 ## Architecture options
@@ -141,4 +142,3 @@ Do not require every document to link to code and tests. Product narratives and 
 6. Update indexes and links in the same change.
 7. Preserve history through version control; avoid permanent archive trees unless readers need old versions.
 8. Obtain approval before deletions or broad relocations.
-

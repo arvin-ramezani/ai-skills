@@ -79,6 +79,7 @@ Classify content before placing it:
 
 - **Persistent:** stable requirements, domain rules, architecture, accepted decisions, conventions, operations, security constraints.
 - **Temporary:** investigation, tool output, hypotheses, implementation sequence, current progress, one-off migration notes.
+- **Operational memory:** compact cross-session outcomes, lessons, handoffs, and promotion candidates; useful for continuity but never canonical by itself.
 - **Promote:** move a temporary finding to persistent knowledge only after it becomes stable and broadly useful.
 - **Expire:** delete or archive temporary artifacts at their stated trigger. Never let `active/` become permanent history.
 
@@ -147,4 +148,3 @@ Before increasing a soft maximum:
 3. Move examples and deep detail to an on-demand reference.
 4. Remove stale temporary information.
 5. Keep the exception only if splitting would weaken coherence.
-
