@@ -1,6 +1,6 @@
 ---
 name: doc-strategy-engineer
-description: Design, audit, bootstrap, and maintain context-efficient project documentation for AI-assisted software development. Use when documenting a feature or behavior, choosing canonical document placement, creating or restructuring a docs system, improving AGENTS.md routing, onboarding to an undocumented repository, resolving documentation conflicts or drift, planning documentation for a monorepo, or syncing docs after code changes. Also use when the user asks for AI-readable documentation architecture, Feature Analysis (FA), documentation context budgets, or Cursor/coding-agent documentation strategy. Do not use for grammar-only edits with no structural, authority, or placement impact.
+description: Design, audit, bootstrap, retrofit, and maintain context-efficient project documentation for AI-assisted software development. Use when documenting a feature or behavior, choosing canonical document placement, creating or restructuring a docs system, improving AGENTS.md or tool-adapter routing on already-started projects, fixing undiscoverable existing docs, onboarding to an undocumented repository, resolving documentation conflicts or drift, planning documentation for a monorepo, or syncing docs after code changes. Also use when the user asks for AI-readable documentation architecture, Feature Analysis (FA), documentation context budgets, or Cursor/coding-agent documentation strategy. Do not use for grammar-only edits with no structural, authority, or placement impact.
 ---
 
 # Documentation Strategy Engineer
@@ -14,6 +14,7 @@ Choose one primary mode. Combine modes only when the request clearly requires it
 | Intent | Mode | Default mutation |
 | --- | --- | --- |
 | Document a feature or phase | `document-feature` | Write requested docs |
+| Improve docs on an already-started project | `retrofit` | Patch routing before rewrite |
 | Assess documentation health | `analyze` | Report only |
 | Design a better architecture | `propose` | Report only |
 | Create an initial docs system | `bootstrap` | Write after scope is clear |
@@ -21,6 +22,8 @@ Choose one primary mode. Combine modes only when the request clearly requires it
 | Evaluate drift after code changes | `sync` | Report unless updates were requested |
 
 If the prompt combines feature work with documentation, use `document-feature`; do not substitute a general analysis report.
+
+On repositories that already have `AGENTS.md`, adapters, indexes, or docs, prefer **`retrofit`** (audit → fix routing) when the problem is discoverability or missing high-frequency pointers—not an empty tree. Do not jump to broad rewrite, `bootstrap`, or unscoped `document-feature` until routing gaps for **existing** facts are addressed. Details: [references/retrofit-routing.md](references/retrofit-routing.md).
 
 ## Establish the context envelope
 
@@ -92,13 +95,23 @@ Use these defaults unless sound project conventions say otherwise:
 | Mechanical enforcement | Tests, schema, lint, hooks, or CI |
 | Temporary research, plan, or progress | Explicit temporary/active artifact |
 
-Do not duplicate complete rules across layers. Keep `AGENTS.md` focused on high-frequency routing, constraints, and commands; keep business knowledge and detailed explanations in discoverable project docs.
+Do not duplicate complete rules across layers. Keep `AGENTS.md` focused on high-frequency routing, constraints, and commands; keep business knowledge and detailed explanations in discoverable project docs. Thin adapters must **name** high-frequency conventions and link to owners—they must not only deep-link into large docs without stating what agents should load when.
 
 ## Run the selected mode
 
+### `retrofit`
+
+For already-started projects. Full procedure: [references/retrofit-routing.md](references/retrofit-routing.md).
+
+1. Inventory scoped `AGENTS.md`, tool adapters, and indexes.
+2. Find facts that **exist** but fail two-hop discoverability (`adapter/AGENTS → index → doc`).
+3. Patch thin adapters and indexes so high-frequency conventions are named and routed; do not rewrite deep docs first.
+4. Only then run `document-feature`, content expansion, or `propose` restructuring for remaining gaps.
+5. Report routing patches separately from new content needs.
+
 ### `document-feature`
 
-1. Inspect the nearest conventions, index, related domain/feature docs, implementation, and tests.
+1. Inspect the nearest conventions, index, related domain/feature docs, implementation, and tests. If this domain’s existing facts are undiscoverable from the nearest adapter/index, fix that route first (or include the route patch with the FA).
 2. Reuse a sound existing location. If none exists, design the smallest coherent path needed for this feature.
 3. Write the engineering document from [templates/feature-analysis.md](templates/feature-analysis.md), adapting it to local conventions rather than filling irrelevant sections.
 4. Add a short Persian human-facing sibling from [templates/feature-analysis.fa.md](templates/feature-analysis.fa.md) only when requested or useful to Persian stakeholders. Keep the English engineering document authoritative.
@@ -108,15 +121,15 @@ Do not duplicate complete rules across layers. Keep `AGENTS.md` focused on high-
 ### `analyze`
 
 1. Inventory the scoped docs, routing files, source/test links, and repository shape.
-2. Evaluate discoverability, authority, context cost, duplication, freshness, traceability, and conflict risk using [references/health-and-maintenance.md](references/health-and-maintenance.md).
-3. Report evidence-backed findings with [templates/analysis-report.md](templates/analysis-report.md).
+2. Evaluate discoverability, authority, context cost, duplication, freshness, traceability, and conflict risk using [references/health-and-maintenance.md](references/health-and-maintenance.md). Explicitly list existing facts that fail two-hop routing.
+3. Report evidence-backed findings with [templates/analysis-report.md](templates/analysis-report.md). Recommend `retrofit` when routing gaps dominate.
 4. Do not edit files.
 
 ### `propose`
 
 1. Establish project size, lifetime, ownership boundaries, repository shape, change rate, and agent usage.
 2. Compare centralized, code-adjacent, and hybrid layouts using [references/document-architecture.md](references/document-architecture.md).
-3. Define routing, canonical ownership, document budgets, metadata policy, temporary-artifact lifecycle, and migration order.
+3. Define routing, canonical ownership, document budgets, metadata policy, temporary-artifact lifecycle, and migration order. Prefer routing fixes for undiscoverable-existing facts before tree moves.
 4. Produce [templates/strategy-proposal.md](templates/strategy-proposal.md). Do not apply it without authorization.
 
 ### `bootstrap`
@@ -126,10 +139,11 @@ Do not duplicate complete rules across layers. Keep `AGENTS.md` focused on high-
 3. Create a compact index, minimum core docs, feature/decision templates only if useful, maintenance policy, and a short `AGENTS.md` route.
 4. Mark unknown facts; do not fill templates with invented product content.
 5. Validate discoverability from `AGENTS.md → index → relevant doc` in no more than two routing hops.
+6. If a usable docs or routing system already exists, switch to `retrofit` instead of scaffolding a parallel tree.
 
 ### `audit`
 
-Evaluate the implemented strategy against [references/health-and-maintenance.md](references/health-and-maintenance.md). Classify findings as Critical, High, Medium, Low, or Informational. Include split/merge candidates, unused documents, repeated retrieval pairs, stale temporary artifacts, and misplaced rules.
+Evaluate the implemented strategy against [references/health-and-maintenance.md](references/health-and-maintenance.md). Classify findings as Critical, High, Medium, Low, or Informational. Include split/merge candidates, unused documents, repeated retrieval pairs, stale temporary artifacts, misplaced rules, and **existing facts that fail two-hop discoverability**. When routing gaps dominate, recommend `retrofit` before rewrite.
 
 ### `sync`
 
@@ -154,7 +168,7 @@ Never split mechanically by page count. Never keep a frequently loaded routing f
 
 ## Mutation boundaries
 
-Apply without another approval when the user requested the exact write, including a feature document, bootstrap, index entry, or link repair.
+Apply without another approval when the user requested the exact write, including a feature document, bootstrap, retrofit routing/index/link repair, or index entry.
 
 Ask before:
 
@@ -174,6 +188,7 @@ Before finishing a write:
 - verify each key claim's evidence label;
 - verify current state is not mistaken for intended contract;
 - verify indexes route without repeating content;
+- verify high-frequency conventions are named in thin adapters/`AGENTS.md`, not only buried in deep docs;
 - verify metadata and budgets match actual read frequency;
 - search for obvious duplication and contradictions in the affected scope;
 - verify temporary artifacts have an owner or cleanup condition;

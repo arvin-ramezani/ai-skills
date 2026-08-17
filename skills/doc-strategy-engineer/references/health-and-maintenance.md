@@ -47,6 +47,8 @@ Do not assign urgency by document length alone.
 - [ ] Root instructions identify the canonical docs entry point.
 - [ ] The index routes without duplicating detail.
 - [ ] Feature/domain knowledge is reachable within two routing hops, with one extra scoped index allowed for large monorepos.
+- [ ] Facts that already exist in the repo are not stranded outside that hop path (undiscoverable-existing).
+- [ ] Thin adapters / high-frequency `AGENTS.md` sections **name** always-needed conventions and link to owners (not only deep dumps).
 - [ ] App/package scopes are explicit.
 - [ ] Names describe concepts rather than chronology or arbitrary numbering alone.
 

@@ -1,4 +1,13 @@
 interface:
   display_name: "Documentation Strategy Engineer"
-  short_description: "Design AI-efficient project documentation"
-  default_prompt: "Use $doc-strategy-engineer to design or improve this project's context-efficient documentation system."
+  short_description: "AI-efficient docs; retrofit routing on started projects"
+  default_prompt: "Use $doc-strategy-engineer to improve this project's documentation.
+    On an already-started repo, audit and patch AGENTS/adapter/index routing before
+    rewriting or adding deep docs."
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

@@ -135,9 +135,10 @@ Do not require every document to link to code and tests. Product narratives and 
 
 1. Inventory canonical candidates and inbound links.
 2. Resolve contradictions before moving content.
-3. Choose the future owner for each knowledge item.
-4. Migrate high-risk misleading content first, then routing, then cleanup.
-5. Update indexes and links in the same change.
-6. Preserve history through version control; avoid permanent archive trees unless readers need old versions.
-7. Obtain approval before deletions or broad relocations.
+3. For already-started projects, fix undiscoverable-existing facts via thin adapters/indexes before rewriting or relocating trees ([retrofit-routing.md](retrofit-routing.md)).
+4. Choose the future owner for each knowledge item.
+5. Migrate high-risk misleading content first, then routing, then cleanup.
+6. Update indexes and links in the same change.
+7. Preserve history through version control; avoid permanent archive trees unless readers need old versions.
+8. Obtain approval before deletions or broad relocations.
 
