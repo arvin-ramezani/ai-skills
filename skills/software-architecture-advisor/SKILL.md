@@ -11,6 +11,16 @@ Recommend the simplest architecture that satisfies verified business and technic
 
 Do not force a familiar technology when another option materially improves the required outcome. Do not introduce complexity for hypothetical scale.
 
+## Package portability
+
+This skill must remain self-contained and vendor-neutral so the same directory can be installed under a shared `.agents/skills/` tree and consumed by different AI agents without maintaining divergent copies.
+
+- Keep runtime references relative to this skill directory.
+- Do not require repository-external files for normal execution.
+- Do not make normal execution depend on vendor-specific `.cursor/`, `.claude/`, `.codex/`, or similar directories.
+- Keep `SKILL.md`, `PROFILE.md`, `PROJECT-CONTEXT.md`, `DECISION-FRAMEWORK.md`, and `OUTPUT-TEMPLATE.md` together when packaging or installing the skill.
+- `INSTALL.md` is distribution guidance and is not required decision context during normal skill execution.
+
 ## Load context
 
 Read these files before advising:
