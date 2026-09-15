@@ -1,6 +1,8 @@
 # Install Software Architecture Advisor
 
-This skill package is self-contained. Keep these files together when installing it:
+This skill is designed to be installed once through a shared, vendor-neutral `.agents/` tree and then exposed to whichever AI agents you use.
+
+Keep these runtime files together:
 
 - `SKILL.md`
 - `PROFILE.md`
@@ -8,58 +10,85 @@ This skill package is self-contained. Keep these files together when installing 
 - `DECISION-FRAMEWORK.md`
 - `OUTPUT-TEMPLATE.md`
 
-## ChatGPT
+`INSTALL.md` is distribution guidance and is not required at runtime.
 
-ChatGPT supports uploaded skills for eligible accounts/workspaces. Availability and permissions are controlled by the current ChatGPT plan and workspace settings.
+## Canonical installation
 
-Official ChatGPT guidance:
+Use one of these paths:
 
-- https://help.openai.com/en/articles/20001066
-
-### Recommended install path
-
-1. Package this directory as `software-architecture-advisor.zip` so `SKILL.md` is at the ZIP root.
-2. In ChatGPT, open **Plugins**.
-3. Open the **Skills** tab.
-4. Select **Create**.
-5. Select **Upload from your computer**.
-6. Upload `software-architecture-advisor.zip`.
-7. Review any scan or review notice shown by ChatGPT.
-8. Install/enable the skill when the upload is accepted.
-
-From the repository root, create the upload ZIP with:
-
-```powershell
-python scripts/package_chatgpt_skill.py software-architecture-advisor
+```text
+Project: <project>/.agents/skills/software-architecture-advisor/
+Global:  ~/.agents/skills/software-architecture-advisor/
 ```
 
-The generated file is:
+Do not create separate canonical copies under `.cursor/`, `.claude/`, `.codex/`, or other vendor-specific directories. If an agent requires its own discovery mechanism, configure that tool to consume, sync, or import the shared `.agents/` installation instead of maintaining a second divergent copy.
+
+The `.agents/` directory is the repository's portable installation convention. Individual AI products may require separate configuration to discover it.
+
+## Install for one project
+
+From the `ai-skills` repository root:
+
+```powershell
+python scripts/install_skill.py software-architecture-advisor --project "D:\path\to\project"
+```
+
+This installs the complete package to:
+
+```text
+D:\path\to\project\.agents\skills\software-architecture-advisor\
+```
+
+## Install globally
+
+```powershell
+python scripts/install_skill.py software-architecture-advisor --global
+```
+
+This installs to:
+
+```text
+~/.agents/skills/software-architecture-advisor/
+```
+
+## Portable ZIP
+
+Some consumers support direct skill upload/import. Build a neutral ZIP with:
+
+```powershell
+python scripts/package_skill.py software-architecture-advisor
+```
+
+Output:
 
 ```text
 dist/software-architecture-advisor.zip
 ```
 
-The packaging script validates that `SKILL.md` exists and contains the expected `name` and `description` frontmatter before creating the archive.
+The archive contains the runtime package with `SKILL.md` at its root.
 
-### ChatGPT account availability
+## ChatGPT
 
-As of September 2026, OpenAI documents ChatGPT Skills for eligible Business, Enterprise, Healthcare, and Edu users, subject to workspace settings and product availability. If the **Skills** tab or upload action is not available, the package is still valid but the current ChatGPT account/workspace cannot install uploaded skills yet.
+ChatGPT uploaded Skills are an optional consumer path, not the canonical source layout.
 
-## OpenAI API
+For eligible ChatGPT accounts/workspaces:
 
-The OpenAI Skills API is separate from ChatGPT account installation. It creates project-scoped API skills and accepts directory files or a ZIP. Use the API only when the skill is intended for an OpenAI API project; do not treat an API skill ID as proof that the skill is installed in the ChatGPT account UI.
+1. Build `dist/software-architecture-advisor.zip` using the neutral packager above.
+2. Open **Plugins** in ChatGPT.
+3. Open **Skills**.
+4. Select **Create** → **Upload from your computer**.
+5. Upload the ZIP and review the scan result.
+
+Official ChatGPT guidance:
+
+- https://help.openai.com/en/articles/20001066
+
+The OpenAI Skills API is separate from ChatGPT account installation and creates project-scoped API skills.
 
 Official API reference:
 
 - https://developers.openai.com/api/reference/python/resources/skills/methods/create
 
-## Cursor
+## Portability rule
 
-For Cursor, copy the whole directory to one of Cursor's discovery locations:
-
-```text
-<project>/.cursor/skills/software-architecture-advisor/
-~/.cursor/skills/software-architecture-advisor/
-```
-
-Do not copy only `SKILL.md`; its linked reference files are part of the skill.
+Never make normal execution depend on files outside this skill directory. Relative references in `SKILL.md` must stay self-contained so the same package can be installed under `.agents/`, synchronized to another agent environment, or uploaded as a ZIP without editing the skill.
