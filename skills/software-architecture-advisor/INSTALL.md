@@ -12,6 +12,10 @@ This skill package is self-contained. Keep these files together when installing 
 
 ChatGPT supports uploaded skills for eligible accounts/workspaces. Availability and permissions are controlled by the current ChatGPT plan and workspace settings.
 
+Official ChatGPT guidance:
+
+- https://help.openai.com/en/articles/20001066
+
 ### Recommended install path
 
 1. Package this directory as `software-architecture-advisor.zip` so `SKILL.md` is at the ZIP root.
@@ -44,6 +48,10 @@ As of September 2026, OpenAI documents ChatGPT Skills for eligible Business, Ent
 ## OpenAI API
 
 The OpenAI Skills API is separate from ChatGPT account installation. It creates project-scoped API skills and accepts directory files or a ZIP. Use the API only when the skill is intended for an OpenAI API project; do not treat an API skill ID as proof that the skill is installed in the ChatGPT account UI.
+
+Official API reference:
+
+- https://developers.openai.com/api/reference/python/resources/skills/methods/create
 
 ## Cursor
 
