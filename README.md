@@ -14,100 +14,98 @@ Install guide: [`skills/software-architecture-advisor/INSTALL.md`](skills/softwa
 
 ### Documentation Strategy Engineer
 
-Designs, audits, bootstraps, retrofits, and maintains context-efficient project documentation for AI-assisted development. Supports feature documentation, routing fixes on started projects, optional cross-session agent memory, FA docs, and documentation architecture for monorepos and greenfield projects.
+Designs, audits, bootstraps, retrofits, and maintains context-efficient project documentation for AI-assisted development.
 
 Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
 
 ### Content Strategy & Content Architecture
 
-Designs evidence-led content strategy, information architecture, page structure, SEO, localization, and UX handoffs before visual design. Defaults to Iranian market, Persian-native, RTL-first context unless the user states otherwise.
+Designs evidence-led content strategy, information architecture, page structure, SEO, localization, and UX handoffs.
 
 Location: [`skills/content-strategy-architecture`](skills/content-strategy-architecture)
 
 ### React 19
 
-Build, refactor, and review React 19.x TypeScript with React Compiler assumed. Thin MUST/NEVER control surface for JSX, Hooks, forms, Suspense, and performance; deep topics live in progressive references. Defer Next.js boundaries to the framework skill and project `AGENTS.md`.
+Builds, refactors, and reviews React 19.x TypeScript with React Compiler assumed.
 
 Location: [`skills/react-19`](skills/react-19)
 
 ### Test Engineering
 
-Designs, implements, reviews, and maintains lean risk-based automated test suites. Adapts to the repository's language, framework, architecture, and tooling; optimizes for confidence rather than test count.
+Designs, implements, reviews, and maintains lean risk-based automated test suites.
 
 Location: [`skills/test-engineering`](skills/test-engineering)
 
-## Repository layout
+## Distribution model
 
-This repository uses `skills/<skill-name>/` as its distribution layout. Each skill is a portable package containing `SKILL.md` and its direct reference files.
+`skills/<skill-name>/` is the catalog/source layout. Each skill is a portable, self-contained package with `SKILL.md` and its direct references.
 
-Keep each skill self-contained. Relative links in `SKILL.md` must resolve inside the same skill directory so the complete directory can be copied into Cursor or packaged for ChatGPT without repository-external dependencies.
+The canonical installed layout is vendor-neutral:
 
-## Install in ChatGPT
-
-ChatGPT supports uploaded skills for eligible accounts/workspaces. OpenAI currently documents the account-level flow as:
-
-1. Open **Plugins** in ChatGPT.
-2. Open the **Skills** tab.
-3. Select **Create**.
-4. Select **Upload from your computer**.
-5. Upload the skill package and review the ChatGPT scan result.
-
-For `software-architecture-advisor`, create a ZIP from the repository root:
-
-```powershell
-python scripts/package_chatgpt_skill.py software-architecture-advisor
+```text
+Project: <project>/.agents/skills/<skill-name>/
+Global:  ~/.agents/skills/<skill-name>/
 ```
 
-Upload:
+Use `.agents/` as the single source of truth for installed skills. Do not maintain parallel `.cursor/`, `.claude/`, `.codex/`, or other vendor-specific copies of the same skill. Agent-specific tooling may point to, sync, or import the shared `.agents/` tree when required by that tool.
+
+This repository does not claim that every AI product natively auto-discovers `.agents/`; the environment using these skills is responsible for exposing the shared `.agents/` installation to each agent.
+
+Keep runtime references relative to the skill directory so the package can be moved, synchronized, zipped, or uploaded without repository-external dependencies.
+
+## Install into `.agents`
+
+### Project install
+
+From this repository root:
+
+```powershell
+python scripts/install_skill.py software-architecture-advisor --project "D:\path\to\project"
+```
+
+Installs to:
+
+```text
+D:\path\to\project\.agents\skills\software-architecture-advisor\
+```
+
+### Global install
+
+```powershell
+python scripts/install_skill.py software-architecture-advisor --global
+```
+
+Installs to:
+
+```text
+~/.agents/skills/software-architecture-advisor/
+```
+
+The installer replaces only the selected skill directory and leaves other installed skills untouched.
+
+## Package a portable skill ZIP
+
+For consumers that accept uploaded skill packages, create a neutral archive:
+
+```powershell
+python scripts/package_skill.py software-architecture-advisor
+```
+
+Output:
 
 ```text
 dist/software-architecture-advisor.zip
 ```
 
-The packager validates the required `SKILL.md` frontmatter and places the skill files at the ZIP root so the uploaded package is self-contained.
+The package keeps `SKILL.md` at the ZIP root, validates required frontmatter and relative references, and excludes source-only installation guidance.
 
-See [`skills/software-architecture-advisor/INSTALL.md`](skills/software-architecture-advisor/INSTALL.md) for account availability notes and the distinction between ChatGPT account installation and the project-scoped OpenAI Skills API.
+### ChatGPT upload
+
+For ChatGPT accounts/workspaces that expose uploaded Skills, the same neutral ZIP can be uploaded through **Plugins → Skills → Create → Upload from your computer**. ChatGPT upload is one consumer path; it is not the canonical repository installation model.
+
+See [`skills/software-architecture-advisor/INSTALL.md`](skills/software-architecture-advisor/INSTALL.md) for details.
 
 Generated archives under `dist/` are local build artifacts and are not committed.
-
-## Install in Cursor
-
-The neutral `skills/` directory is preferable for a public catalog because `.cursor/skills/` is an installation and automatic-discovery location. Keeping source packages under `skills/` avoids activating every catalog skill when this repository is opened and leaves room for compatibility with other Agent Skills consumers.
-
-Cursor does not automatically discover this repository's `skills/` directory. Install a skill by copying its complete directory to one of Cursor's discovery locations:
-
-- Project: `<project>/.cursor/skills/<skill-name>/`
-- Personal: `~/.cursor/skills/<skill-name>/`
-
-### One Cursor project
-
-Local — Windows PowerShell:
-
-```powershell
-$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, react-19, test-engineering
-$source = Join-Path (Get-Location) "skills\$skill"
-$destination = "D:\path\to\project\.cursor\skills\$skill"
-
-New-Item -ItemType Directory -Force -Path (Split-Path $destination)
-Copy-Item -Recurse -Force $source $destination
-```
-
-Replace the paths with the repository clone and target project locations.
-
-### Personal Cursor skill
-
-Local — Windows PowerShell:
-
-```powershell
-$skill = "software-architecture-advisor"  # or doc-strategy-engineer, content-strategy-architecture, react-19, test-engineering
-$source = Join-Path (Get-Location) "skills\$skill"
-$destination = Join-Path $HOME ".cursor\skills\$skill"
-
-New-Item -ItemType Directory -Force -Path (Split-Path $destination)
-Copy-Item -Recurse -Force $source $destination
-```
-
-Personal skills are available across projects. Project skills can be committed with a project and shared with its team.
 
 ## Repository structure
 
@@ -121,28 +119,14 @@ skills/
     OUTPUT-TEMPLATE.md
     INSTALL.md
   doc-strategy-engineer/
-    SKILL.md
-    agents/
-    assets/
-    references/
-    templates/
   content-strategy-architecture/
-    SKILL.md
-    agents/
-    assets/
-    references/
   react-19/
-    SKILL.md
-    agents/
-    references/
   test-engineering/
-    SKILL.md
-    agents/
-    assets/
 scripts/
-  package_chatgpt_skill.py
+  install_skill.py
+  package_skill.py
 docs/
   improvements/
 ```
 
-Each skill keeps its entry instructions concise and places detailed guidance in one-level reference files.
+Each skill keeps its entry instructions concise and places detailed guidance in direct reference files or subdirectories owned by that skill.
