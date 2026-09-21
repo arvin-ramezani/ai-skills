@@ -22,6 +22,8 @@ Start with:
 
 - Status: `Provisional` or `Final`
 - Scope, version, and date
+- Canonical product context: location, accountable owner, version/date, and applicable surfaces
+- Surface-ownership map for mixed public and functional products
 - Confirmed facts and supplied evidence
 - Research findings with citations
 - Assumptions and hypotheses
@@ -30,6 +32,10 @@ Start with:
 - Research or validation still required
 
 Do not label the architecture final while critical unknowns remain.
+
+### Traceability IDs
+
+When the work continues into UX, screen specifications, or implementation checks, assign stable IDs such as `PAGE-###`, `SEC-###`, and `REQ-###`. Preserve an ID across revisions unless the underlying decision is replaced; mark retired IDs instead of silently reusing them.
 
 ## 2. Executive content strategy
 
@@ -90,10 +96,11 @@ Separate journeys only when audience, market, or offer differences change the de
 
 Create one block per major page.
 
-### `[Page name]`
+### `[PAGE-### — Page name]`
 
 | Field | Decision |
 | --- | --- |
+| ID | PAGE-### |
 | Purpose | |
 | Primary audience | |
 | Main user question | |
@@ -111,9 +118,9 @@ Create one block per major page.
 
 Then define ordered sections:
 
-| Order | Section | Communication job | Required content | Priority | Mobile treatment | Locale behavior |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | | | | Critical / Important / Supporting / Optional | Keep / compress / disclose / move / remove | Shared / translated / rewritten / market-specific / omitted |
+| ID | Order | Section | Communication job | Required content | Priority | Mobile treatment | Locale behavior |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| SEC-### | 1 | | | | Critical / Important / Supporting / Optional | Keep / compress / disclose / move / remove | Shared / translated / rewritten / market-specific / omitted |
 
 Do not prescribe component type, visual styling, animation, or exact layout unless a content constraint makes it necessary.
 
@@ -163,6 +170,7 @@ End with a standalone handoff.
 - Content, conversion, trust, and SEO priorities
 - Required terminology and locale behavior
 - Mandatory dependencies and proof
+- Canonical product-context reference and material decision/requirement IDs
 
 ### Visual communication brief
 
@@ -178,6 +186,7 @@ End with a standalone handoff.
 - Localization and market divergence
 - Accessibility-sensitive content
 - Dependencies, unknowns, and validation work
+- Conflicts escalated to the canonical-context owner and their resolution status
 
 ### Downstream freedom
 
@@ -207,5 +216,6 @@ Report each as `Pass`, `Needs validation`, or `Blocked`:
 - Visual communication assessment
 - UX/UI handoff completeness
 - Ownership-boundary compliance
+- Canonical-context and traceability compliance when applicable
 
 List only material unresolved risks.

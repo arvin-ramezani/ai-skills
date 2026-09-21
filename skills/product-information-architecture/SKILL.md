@@ -11,7 +11,9 @@ Create the user-facing conceptual model, information hierarchy, navigation syste
 
 - Use this skill for authenticated or functional product surfaces such as CRM, ERP, dashboards, admin panels, back-office tools, and multi-role SaaS applications.
 - Use `content-strategy-architecture` for public-facing marketing, ecommerce storefront, landing, corporate, editorial, and other content-led surfaces.
-- For mixed products, define explicit surface ownership and avoid duplicate specifications for the same information.
+- For mixed products, define explicit surface ownership and one canonical product context for shared facts, approved terminology, offer and capability names, limitations, and proof.
+- Require both skill outputs to cite the canonical context by location, owner, and version/date instead of redefining shared product truth independently.
+- Escalate conflicts with the canonical context to its accountable product owner. Keep affected decisions provisional until that owner resolves the conflict.
 - Hand detailed flows, states, validation, recovery, save/resume, edge cases, and interaction rules to `ux-flow-designer`.
 - Hand visual direction, layout, component styling, asset selection, image composition, and design-system decisions to Impeccable or another visual/UI specialist.
 
@@ -48,7 +50,9 @@ Determine:
 7. Search, filtering, sorting, grouping, saved-view, and cross-object discovery needs
 8. Localization, Persian/RTL, accessibility, device, and density constraints
 9. Existing design-system, UX-flow, technical, regulatory, or migration constraints
-10. Exact artifact the downstream UX process needs
+10. Canonical product context, accountable owner, version/date, and surface-ownership map when the product includes both public and functional surfaces
+11. Named owner and approval gate for final application UI wording
+12. Exact artifact the downstream UX process needs
 
 Maintain an internal decision ledger:
 
@@ -92,7 +96,8 @@ Work from user goals toward product structure:
 8. Define findability requirements: entry points, search scope, filters, facets, sorting, grouping, recent items, saved views, and empty/no-result guidance.
 9. Map role-specific visibility and terminology differences without inventing authorization rules.
 10. Assess whether visual explanations or data views could materially improve orientation, comprehension, comparison, or proof.
-11. Produce an implementation-ready UX handoff with fixed IA decisions, open questions, and downstream freedoms.
+11. Assign stable IDs to material roles, concepts, objects, routes, and IA requirements when the work will continue into UX, screen specifications, or implementation acceptance checks.
+12. Produce an implementation-ready UX handoff with fixed IA decisions, open questions, and downstream freedoms.
 
 ## Define navigation and findability
 
@@ -125,6 +130,16 @@ At the architecture level, specify:
 
 Do not prescribe database fields, API payloads, table schemas, component libraries, or exact screen layouts.
 
+## Gate production UI wording
+
+Define microcopy requirements and required meaning; do not leave developers to invent final labels, empty states, errors, warnings, confirmations, or help text during implementation.
+
+- Name a `Product UI Content Owner` for the project. This may be a content designer, product owner, or an authorized writing agent whose output the product owner approves.
+- Never assign the developer or implementer as Product UI Content Owner merely because no content specialist exists. Require explicit authorization and suitable accountability; otherwise mark ownership and production wording `Blocked`.
+- Require final application wording to be drafted after the relevant IA and UX-flow decisions are stable.
+- Record the terminology source, draft owner, approval owner, approval status, and unresolved wording dependencies in the handoff.
+- Block production wording from being treated as approved when no accountable owner or approval gate exists.
+
 ## Assess visual communication without designing it
 
 For each relevant product area or object, ask:
@@ -146,7 +161,7 @@ Own:
 - Capability grouping and navigation architecture
 - Lists/details hierarchy and findability requirements
 - Role-specific visibility requirements
-- Content, microcopy, localization, RTL, and visual communication requirements
+- Content and microcopy requirements, localization, RTL, and visual communication requirements
 
 Do not own:
 
@@ -154,6 +169,7 @@ Do not own:
 - Authorization policy implementation or permission enforcement
 - Detailed flows, transitions, validation, recovery, or state machines
 - Exact screen layouts, components, visual direction, or design system
+- Final application UI wording unless the user explicitly authorizes drafting; approval still belongs to the named Product UI Content Owner
 - Analytics event implementation
 
 Information architecture may inform engineering architecture but never claims authority over it.
@@ -170,6 +186,9 @@ Before labeling work final, verify:
 - Persian/RTL and localization constraints are actionable when relevant.
 - Visual opportunities are justified; applications with little or no imagery are allowed and documented.
 - UX handoff includes fixed IA decisions, content requirements, boundaries, dependencies, unknowns, and validation needs.
+- Mixed-surface work cites one canonical product context and escalates rather than silently resolving conflicts.
+- Stable IDs preserve traceability into downstream artifacts when multi-stage delivery requires it.
+- Final application wording has a named Product UI Content Owner and explicit approval gate; engineering is not the fallback copywriter.
 - Detailed UX-flow, visual-design, and engineering ownership remain downstream.
 
 If a critical concept or scope boundary remains unresolved, return to discovery or label the specification `Provisional`.

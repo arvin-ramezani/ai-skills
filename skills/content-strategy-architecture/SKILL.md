@@ -11,7 +11,9 @@ Create the evidence, content decisions, and public-site architecture that downst
 
 - Use this skill for public-facing marketing, commerce, editorial, and other content-led surfaces.
 - Use `product-information-architecture` for functional applications such as CRM, ERP, dashboards, admin panels, and operational products.
-- For a mixed product, assign each surface to one skill. Do not create parallel specifications for the same information.
+- For a mixed product, assign each surface to one skill and define one canonical product context for shared facts, approved terminology, offer and capability names, limitations, and proof.
+- Require both skill outputs to cite the canonical context by location, owner, and version/date instead of redefining shared product truth independently.
+- Escalate conflicts with the canonical context to its accountable product owner. Keep affected decisions provisional until that owner resolves the conflict.
 - Hand detailed task flows, states, validation, recovery, permissions behavior, and interaction logic to `ux-flow-designer`.
 - Hand visual direction, aesthetics, layout, component styling, asset selection, image composition, and design-system decisions to Impeccable or another visual/UI specialist.
 
@@ -46,7 +48,8 @@ Inspect product and business documents, current pages, analytics, research, bran
 6. Search goals and available first-party search data
 7. Brand voice, editorial preferences, and prohibited claims
 8. Mobile and accessibility-sensitive content constraints
-9. Exact artifact the downstream UX/UI process needs
+9. Canonical product context, accountable owner, version/date, and surface-ownership map when the product includes both public and functional surfaces
+10. Exact artifact the downstream UX/UI process needs
 
 Maintain an internal decision ledger:
 
@@ -96,7 +99,8 @@ Work in this order:
 8. Define mobile first-screen understanding, compression, progressive disclosure, and removable material.
 9. Define SEO topics, intent, semantic relationships, URL direction, headings, metadata direction, and internal links without keyword stuffing.
 10. Assess visual communication needs and record justified opportunities or explicit no-asset decisions.
-11. Produce a standalone UX/UI handoff containing implementation-relevant decisions and clearly delegated freedoms.
+11. Assign stable IDs to material pages, sections, and requirements when the work will continue into UX, screen specifications, or implementation acceptance checks.
+12. Produce a standalone UX/UI handoff containing implementation-relevant decisions and clearly delegated freedoms.
 
 For every major page, define:
 
@@ -149,6 +153,8 @@ Before labeling work final, verify:
 - Visual opportunities are justified by communication needs; unnecessary imagery is absent.
 - Every potential asset includes a source/evidence requirement and text-only fallback when relevant.
 - UX/UI handoff includes fixed decisions, downstream freedoms, dependencies, unknowns, and validation needs.
+- Mixed-surface work cites one canonical product context and escalates rather than silently resolving conflicts.
+- Stable IDs preserve traceability into downstream artifacts when multi-stage delivery requires it.
 - The skill has not absorbed detailed UX-flow or visual-design ownership.
 
 If a critical input remains unresolved, return to discovery or label the specification `Provisional`.

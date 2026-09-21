@@ -21,6 +21,8 @@ Use only the sections needed by the product. Omit irrelevant fields rather than 
 
 - Status: `Provisional` or `Final`
 - Scope, version, and date
+- Canonical product context: location, accountable owner, version/date, and applicable surfaces
+- Surface-ownership map for mixed public and functional products
 - Confirmed facts and supplied evidence
 - Research findings with source, date, and confidence
 - Assumptions and hypotheses
@@ -30,6 +32,10 @@ Use only the sections needed by the product. Omit irrelevant fields rather than 
 - Validation still required
 
 Do not label the architecture final while critical product meaning remains unresolved.
+
+### Traceability IDs
+
+When the work continues into UX, screen specifications, or implementation checks, assign stable IDs such as `ROLE-###`, `TERM-###`, `OBJ-###`, `CAP-###`, `NAV-###`, and `IA-REQ-###`. Preserve an ID across revisions unless the underlying decision is replaced; mark retired IDs instead of silently reusing them.
 
 ## 2. Product, users, and scope
 
@@ -44,27 +50,27 @@ Define:
 - Accessibility, device, density, and regulatory constraints
 - Existing UX, design-system, and engineering dependencies
 
-| Role | Goal | Primary tasks | Frequency/risk | Information needed | Evidence status |
-| --- | --- | --- | --- | --- | --- |
+| ID | Role | Goal | Primary tasks | Frequency/risk | Information needed | Evidence status |
+| --- | --- | --- | --- | --- | --- | --- |
 
 ## 3. Terminology and concepts
 
-| Concept | Preferred user-facing term | Definition | Synonyms/current labels | Avoid | Role/locale variance | Evidence |
-| --- | --- | --- | --- | --- | --- | --- |
+| ID | Concept | Preferred user-facing term | Definition | Synonyms/current labels | Avoid | Role/locale variance | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
 Flag collisions where one term represents multiple concepts or multiple terms represent the same concept.
 
 ## 4. Information objects and relationships
 
-| Object | User purpose | Primary identifier | Recognition attributes | Status/lifecycle | Relationships | Sensitive/conditional information |
-| --- | --- | --- | --- | --- | --- | --- |
+| ID | Object | User purpose | Primary identifier | Recognition attributes | Status/lifecycle | Relationships | Sensitive/conditional information |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
 Describe relationships in user-facing language. Use a compact diagram only when cardinality or branching is materially clearer visually. Label implementation details as engineering dependencies rather than IA decisions.
 
 ## 5. Capability organization
 
-| Capability group | User purpose | Included capabilities | Primary roles | Related objects | Boundary/rationale |
-| --- | --- | --- | --- | --- | --- |
+| ID | Capability group | User purpose | Included capabilities | Primary roles | Related objects | Boundary/rationale |
+| --- | --- | --- | --- | --- | --- | --- |
 
 Group by user purpose, not current code modules or database ownership.
 
@@ -120,6 +126,14 @@ Define:
 - Long-label, mixed-direction, truncation, table, chart, and sequence risks
 - User-generated versus system-generated content behavior
 
+Define requirements separately from approved production wording:
+
+| ID | UI content requirement | Surface/state | Required meaning | Terminology source | Draft owner | Approval owner | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| IA-REQ-### | | | | | | | Required / Drafted / Approved / Blocked |
+
+Name the `Product UI Content Owner`. Do not default this role to the developer or implementer because no content specialist exists. Without explicit authorization and an accountable approval owner, mark production wording `Blocked`. Engineering must implement approved wording or an explicitly marked placeholder; it must not silently author production labels, errors, empty states, warnings, confirmations, or help content.
+
 ## 10. Visual communication requirements
 
 Include justified opportunities and meaningful no-asset decisions.
@@ -141,12 +155,14 @@ End with a standalone handoff.
 - Capability groups and navigation layers
 - List, detail, search, filter, sort, and grouping requirements
 - Role visibility and locale constraints
+- Stable IDs for material IA decisions and requirements
 
 ### Content requirements
 
 - Required labels and microcopy categories
 - Empty, no-result, restricted, partial-data, warning, and help content
 - Terminology governance and localization requirements
+- Production-wording draft owner, approval owner, and status
 
 ### Visual communication brief
 
@@ -160,6 +176,7 @@ End with a standalone handoff.
 - Policy, domain, research, engineering, analytics, or legal dependencies
 - Assumptions and validation tasks
 - Contradictions requiring owner decisions
+- Canonical product-context reference and conflicts awaiting its accountable owner
 
 ### Downstream freedom
 
@@ -170,8 +187,9 @@ End with a standalone handoff.
 ### Next-stage ownership
 
 - `ux-flow-designer`: flows, states, permissions interactions, validation, failures, recovery, save/resume, and acceptance criteria
+- Product UI Content Owner: draft or authorize final labels, empty states, errors, warnings, confirmations, and help text after IA and relevant flows stabilize; record approval before implementation acceptance
 - Visual/UI specialist: layout, components, visual direction, asset selection, and design system
-- Engineering: services, data models, APIs, authorization enforcement, search implementation, analytics events, and performance
+- Engineering: services, data models, APIs, authorization enforcement, search implementation, analytics events, performance, and implementation of approved UI wording
 
 ## 12. Quality gate
 
@@ -189,5 +207,7 @@ Report each as `Pass`, `Needs validation`, or `Blocked`:
 - Visual communication assessment
 - UX handoff completeness
 - Ownership-boundary compliance
+- Canonical-context and traceability compliance when applicable
+- Production-wording owner and approval-gate completeness
 
 List only material unresolved risks.
