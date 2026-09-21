@@ -18,11 +18,19 @@ Designs, audits, bootstraps, retrofits, and maintains context-efficient project 
 
 Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
 
-### Content Strategy & Content Architecture
+### Content Strategy & Architecture
 
-Designs evidence-led content strategy, information architecture, page structure, SEO, localization, and UX handoffs.
+Designs evidence-led content strategy, public-site information architecture, conversion and SEO structure, localization, visual communication requirements, and UX/UI handoffs for content-driven experiences.
 
 Location: [`skills/content-strategy-architecture`](skills/content-strategy-architecture)
+
+### Product Information Architecture
+
+Designs user-facing concepts, objects, capability groups, navigation, lists/details, findability, role visibility, localization, visual communication requirements, and UX handoffs for functional software applications.
+
+Location: [`skills/product-information-architecture`](skills/product-information-architecture)
+
+Use Content Strategy & Architecture for public marketing/content surfaces and Product Information Architecture for authenticated or functional application surfaces. A mixed product may use both for separate surfaces without duplicating ownership.
 
 ### React 19
 
@@ -120,6 +128,7 @@ skills/
     INSTALL.md
   doc-strategy-engineer/
   content-strategy-architecture/
+  product-information-architecture/
   react-19/
   test-engineering/
 scripts/

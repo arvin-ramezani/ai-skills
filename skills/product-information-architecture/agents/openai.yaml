@@ -1,0 +1,8 @@
+interface:
+  display_name: "Product Information Architecture"
+  short_description: "Application concepts, navigation, and findability"
+  default_prompt: "Use $product-information-architecture to structure a complex application before detailed UX-flow design."
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+policy:
+  allow_implicit_invocation: true
