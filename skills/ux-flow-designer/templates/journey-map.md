@@ -14,7 +14,7 @@ Exclusions:
 
 ## Current journey
 | Stage | Goal | User action | System response | Actors | Channel | Backstage | Wait | Pain point | Evidence |
-|---|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|
 
 ## Problems
 | ID | Stage | Problem | Impact | Root cause | Severity | Evidence |

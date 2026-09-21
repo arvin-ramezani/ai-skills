@@ -126,7 +126,7 @@ flowchart TD
 
 ## Business-rule decision table
 | Condition/result | Case 1 | Case 2 | Case 3 | Case 4 |
-|---|---:|---:|---:|---:|---:|
+|---|---:|---:|---:|---:|
 | [Condition] | | | | |
 | Result | | | | |
 
@@ -145,7 +145,7 @@ flowchart TD
 
 ### System failure
 | ID | Failure | Result certainty | Data saved | Retry safe | Recovery | Owner |
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 
 ## Edge cases
 | ID | Scenario | Trigger | Expected behaviour | Rule | Recovery | Criteria |
@@ -157,7 +157,7 @@ flowchart TD
 
 ## Heuristic review
 | ID | Heuristic | State | Finding | Severity | Required behaviour |
-|---|---|---|---|---|---:|---|
+|---|---|---|---|---:|---|
 
 ## Analytics events
 | ID | Event | Trigger | State change | Properties | Question |
@@ -172,7 +172,7 @@ flowchart TD
 
 ## Questions requiring user research
 | ID | Question | Decision | Users | Method | Priority |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 
 ## Risks and dependencies
 ### Risks

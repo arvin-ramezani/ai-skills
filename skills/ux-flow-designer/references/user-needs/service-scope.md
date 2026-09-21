@@ -112,7 +112,7 @@ Reject or postpone a capability when:
 - it addresses an internal preference rather than a user problem
 - a simpler capability can meet the same need
 - it duplicates an existing solution
-- it creates complexity disproportion to its user value
+- it creates complexity disproportionate to its user value
 
 ---
 

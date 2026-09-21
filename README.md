@@ -32,6 +32,12 @@ Location: [`skills/product-information-architecture`](skills/product-information
 
 Use Content Strategy & Architecture for public marketing/content surfaces and Product Information Architecture for authenticated or functional application surfaces. A mixed product may use both for separate surfaces without duplicating ownership.
 
+### UX Flow Designer
+
+Designs, analyses, documents, and reviews end-to-end application UX flows, including user needs, journeys, states, business rules, permissions, failures, recovery, accessibility, analytics, and implementation-ready acceptance criteria.
+
+Location: [`skills/ux-flow-designer`](skills/ux-flow-designer)
+
 ### React 19
 
 Builds, refactors, and reviews React 19.x TypeScript with React Compiler assumed.
@@ -129,6 +135,7 @@ skills/
   doc-strategy-engineer/
   content-strategy-architecture/
   product-information-architecture/
+  ux-flow-designer/
   react-19/
   test-engineering/
 scripts/

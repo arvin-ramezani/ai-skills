@@ -8,7 +8,7 @@
 
 ## Users
 | User | Goal | Trigger | Current method | Constraints | Evidence | Confidence |
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 
 ## User need: UN-001
 **As a:**  
