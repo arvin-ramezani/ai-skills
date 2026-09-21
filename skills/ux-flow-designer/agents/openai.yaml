@@ -1,0 +1,8 @@
+interface:
+  display_name: "UX Flow Designer"
+  short_description: "User journeys, interaction states, and acceptance criteria"
+  default_prompt: "Use $ux-flow-designer to design or review evidence-led UX flows and produce implementation-ready behavioral specifications."
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+policy:
+  allow_implicit_invocation: true
