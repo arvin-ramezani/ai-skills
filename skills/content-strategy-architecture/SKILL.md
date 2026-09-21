@@ -1,171 +1,165 @@
 ---
 name: content-strategy-architecture
-description: Design evidence-led content strategy, information architecture, page architecture, SEO structure, localization strategy, and implementation-ready UX handoffs before visual or interaction design. Use for Iranian or Persian/Farsi-first websites, products, apps, landing pages, SaaS, ecommerce, dashboards, bilingual Persian-English experiences, content redesigns, sitemaps, navigation, messaging hierarchy, conversion journeys, or pre-UX planning. Treat Iran, Iranian users, natural Persian, RTL, and Persian search behavior as the default primary context unless the user states otherwise. Do not use for copy-only requests unless strategy or architecture is also required.
+description: Design evidence-led content strategy and information architecture for public-facing, content-driven digital experiences, including marketing websites, SaaS websites, ecommerce storefronts, landing pages, corporate sites, content-heavy sites, and multilingual websites. Use for business and audience discovery, positioning, messaging, sitemap and navigation, page and section purpose, conversion architecture, SEO, trust, localization, Persian-native and RTL content, mobile priorities, visual communication requirements, and implementation-ready UX handoffs. Do not use for authenticated application information architecture, detailed UX flows, final visual design, or copy-only requests unless strategy or architecture is also required.
 ---
 
-# Content Strategy & Content Architecture
+# Content Strategy & Architecture
 
-Create the content foundation that UX/UI design will implement. Establish strategy, evidence, structure, hierarchy, and localization decisions before drafting final copy or deciding visual presentation.
+Create the evidence, content decisions, and public-site architecture that downstream UX and UI design can implement without inventing product or business intent.
 
-## Operating principles
+## Route the work
 
-- Default to `Iranian market -> Iranian users -> Persian content -> RTL experience` unless the user defines another priority.
-- Treat Persian as a native content system, not as translated English.
-- Treat audience beliefs as hypotheses until supported by user evidence or credible research.
-- Separate confirmed facts, user assumptions, research findings, hypotheses, decisions, and unknowns.
-- Integrate SEO, conversion, localization, mobile constraints, and trust into the architecture from the beginning.
-- Preserve the user's desired brand taste unless it materially harms clarity, accessibility, usability, SEO, or conversion; then explain the tradeoff briefly.
-- Aim for simple, modern, premium, creative, clear content. Reject empty claims, generic startup language, fake urgency, keyword stuffing, and AI-sounding prose.
-- Keep content decisions separate from visual styling and interaction design.
+- Use this skill for public-facing marketing, commerce, editorial, and other content-led surfaces.
+- Use `product-information-architecture` for functional applications such as CRM, ERP, dashboards, admin panels, and operational products.
+- For a mixed product, assign each surface to one skill. Do not create parallel specifications for the same information.
+- Hand detailed task flows, states, validation, recovery, permissions behavior, and interaction logic to `ux-flow-designer`.
+- Hand visual direction, aesthetics, layout, component styling, asset selection, image composition, and design-system decisions to Impeccable or another visual/UI specialist.
 
-Read [persian-content-system.md](references/persian-content-system.md) for every Persian, Iranian, bilingual, or RTL task. Read [research-and-evidence.md](references/research-and-evidence.md) whenever market, competitor, search, regulatory, pricing, or audience claims require external evidence. Read [deliverable-template.md](references/deliverable-template.md) before producing an interim or final architecture.
+## Apply operating principles
 
-## Phase 1: establish the brief
+- Inspect supplied sources before asking questions.
+- Separate facts, research findings, assumptions, hypotheses, recommendations, decisions, contradictions, and unknowns.
+- Treat audience beliefs and competitor patterns as hypotheses until supported by evidence.
+- Integrate positioning, conversion, trust, SEO, localization, mobile priorities, and accessibility-sensitive content into the architecture.
+- Treat Persian as a native content system rather than translated English.
+- Default to the user's stated market and language. If none is stated and the context is Iranian, use `Iranian market -> Persian content -> RTL experience` as a documented working assumption, not a universal default.
+- Keep copy strategy distinct from complete production copy. Write full copy only when explicitly requested or authorized.
+- Identify communication needs before proposing an asset. Never assume that a page needs an image.
+- Leave final visual and interaction decisions to downstream specialists.
 
-Inspect all supplied sources before asking questions: product documents, existing pages, analytics, research, brand guidance, repository instructions, content inventories, and prior decisions.
+## Load references selectively
 
-Build an internal decision ledger with these states:
+- Read [deliverable-template.md](references/deliverable-template.md) before producing an interim or final specification.
+- Read [visual-communication-requirements.md](references/visual-communication-requirements.md) whenever assessing imagery, screenshots, diagrams, comparison visuals, proof assets, or a no-image decision.
+- Read [persian-content-system.md](references/persian-content-system.md) for every Persian, Iranian, bilingual Persian-English, or RTL task.
+- Read [research-and-evidence.md](references/research-and-evidence.md) whenever market, audience, competitor, search, pricing, regulatory, or technology claims require external evidence.
+
+## Establish the brief
+
+Inspect product and business documents, current pages, analytics, research, brand guidance, content inventories, repository instructions, constraints, and prior decisions. Then determine:
+
+1. Business model, offer, scope, and primary conversion
+2. Primary audience, problem, knowledge, objections, alternatives, and decision context
+3. Product capabilities, limitations, differentiation, and required proof
+4. Markets, languages, locale priority, and launch boundaries
+5. Existing content, evidence, gaps, constraints, and governance
+6. Search goals and available first-party search data
+7. Brand voice, editorial preferences, and prohibited claims
+8. Mobile and accessibility-sensitive content constraints
+9. Exact artifact the downstream UX/UI process needs
+
+Maintain an internal decision ledger:
 
 | State | Meaning |
 | --- | --- |
-| Confirmed | Directly supported by the user, product, analytics, or reliable evidence |
-| Assumption | Claimed or implied but not yet verified |
-| Hypothesis | A testable explanation or opportunity |
-| Decision | Explicitly chosen direction and rationale |
+| Fact | Directly supported by the user, product, analytics, or authoritative source |
+| Research finding | Externally observed evidence with source, date, scope, and confidence |
+| Assumption | Working input not yet verified |
+| Hypothesis | Testable explanation or opportunity |
+| Recommendation | Proposed direction awaiting a decision |
+| Decision | Chosen direction and rationale |
 | Unknown | Material missing information |
-| Contradiction | Two inputs that cannot both guide the architecture |
+| Contradiction | Inputs that cannot both guide the architecture |
 
-Do not expose the full ledger unless useful. Use it to avoid repeated questions and accidental fact inflation.
+Expose only the decision-relevant parts of the ledger.
 
-Determine first:
+## Run bounded adaptive discovery
 
-1. Product and business model
-2. Primary business goal and conversion
-3. Primary Iranian user or explicitly chosen alternative
-4. User problem, task, knowledge, objections, and current alternatives
-5. Product capabilities and differentiators
-6. Launch markets and language priority
-7. Existing content, evidence, constraints, and UX/design-system context
-8. SEO goals and available search data
-9. Brand personality and the user's content taste
-10. Exact artifact the downstream UX/UI process needs
+Do not jump to a final specification when material inputs are missing.
 
-## Phase 2: run adaptive discovery
+1. Ask one to three high-impact questions per round.
+2. Ask only questions whose answers can change scope, hierarchy, positioning, conversion, localization, evidence, or handoff constraints.
+3. Explain choices with brief examples or mutually exclusive options when the user lacks design vocabulary.
+4. Do not repeat resolved questions or ask for information already present in supplied sources.
+5. Resolve material contradictions before finalizing.
+6. Stop asking when remaining uncertainty can be documented safely as assumptions, validation work, or downstream freedom.
 
-Do not produce a final architecture immediately. Ask one to three high-value questions per turn. Prefer questions whose answers change page scope, journey, positioning, conversion, or localization.
+If the user requests speed or a provisional draft, proceed with explicit assumptions, confidence, and validation needs. Never disguise provisional work as final.
 
-For each round:
+## Research only when it changes a decision
 
-1. State any decision already resolved when it helps orient the user.
-2. Ask only unresolved questions.
-3. Offer concise examples or mutually exclusive options when the user may not know the vocabulary.
-4. Update the decision ledger.
-5. Identify contradictions explicitly and resolve them before continuing.
-6. Stop asking when remaining unknowns are non-critical or can be documented as research tasks.
+Start from a decision question rather than a broad topic. Prefer first-party evidence, product behavior, authoritative sources, and current primary sources. Treat competitor pages as market observations, not proof of user needs.
 
-Do not ask questions already answered by supplied sources. Do not overwhelm the user with a static questionnaire. If the user requests a fast draft, create a clearly labeled provisional architecture with assumptions and validation needs; never disguise it as final.
+Never invent search volume, keyword difficulty, rankings, traffic, conversion, pricing, audience preferences, or competitor behavior. Label unsupported needs as `Research required` and state the method, market, timeframe, and decision the research will inform.
 
-Cover only relevant dimensions:
-
-- Business: model, goal, conversion, commercial constraints
-- Users: segments, jobs, knowledge, language, objections, alternatives
-- Market: Iran segment, local competitors, category expectations, international ambition
-- Product: capabilities, value, limitations, required understanding
-- Brand: perception, personality, references, forbidden tones, copy density
-- Content: inventory, gaps, proof, required and prohibited material
-- SEO: intended demand, search intents, topic ownership, available datasets
-- Localization: Persian/English launch scope, shared versus divergent journeys
-- UX: platform, mobile constraints, design system, downstream handoff needs
-
-## Phase 3: research selectively
-
-Research only when it can change a decision. Use current primary or authoritative sources where available; use competitor pages as market evidence, not objective truth.
-
-For Iran and Persian, investigate where relevant:
-
-- Real user vocabulary and commonly retained English technical terms
-- Persian search intent, result patterns, query variants, and local competitors
-- Category-specific trust and proof expectations
-- Local transaction, currency, support, service, or infrastructure constraints
-- Mobile and connectivity constraints for this product's actual audience
-
-For international markets, investigate country and language intent independently. Do not project English-market findings onto Iran.
-
-Never invent search volume, keyword difficulty, rankings, traffic, conversion, pricing, competitor behavior, or audience preferences. Label unsupported needs as `Research required` and specify the method or data needed.
-
-## Phase 4: choose the market architecture
-
-Choose and justify one model:
-
-| Model | Use when |
-| --- | --- |
-| Shared | Markets have materially similar tasks, hierarchy, proof, and conversion paths |
-| Localized | Page structure can stay shared but messaging, terminology, proof, CTA, or SEO targeting must differ |
-| Market-specific | Users, offers, regulations, journeys, or search demand require substantially different structures |
-
-For every major divergence, record whether content is:
-
-- Shared unchanged
-- Translated with locale formatting
-- Transcreated or rewritten for equivalent intent and effect
-- Market-specific
-- Omitted in one market
-
-## Phase 5: design the architecture
+## Design the architecture
 
 Work in this order:
 
-1. Define positioning, value proposition, messaging pillars, voice, and conversion hierarchy.
-2. Map primary journeys and user questions.
-3. Create page inventory, sitemap, navigation, and relationships.
-4. Assign one primary purpose, audience, search intent, and conversion role to each major page.
-5. Design section order from user need and decision sequence, not from a generic landing-page template.
-6. Assign proof, objections, internal links, and localization behavior.
-7. Classify each content element as `Critical`, `Important`, `Supporting`, or `Optional`.
-8. Define mobile above-the-fold content, compression, progressive disclosure, persistent CTA needs, and removable material.
-9. Define topic clusters, semantic relationships, page targeting, URL direction, headings, metadata direction, and internal links without keyword stuffing.
-10. Produce a UX Design Input handoff containing only implementation-relevant content decisions.
+1. Define audience, positioning, value proposition, messaging pillars, voice, and conversion hierarchy.
+2. Map primary decision journeys and the questions content must answer.
+3. Create the page inventory, sitemap, navigation, and contextual pathways.
+4. Assign each major page one primary purpose, audience, intent, and conversion role.
+5. Order sections from user need and decision sequence, not a generic landing-page formula.
+6. Assign required content, proof, objections, trust, dependencies, internal links, and locale behavior.
+7. Classify content as `Critical`, `Important`, `Supporting`, or `Optional`.
+8. Define mobile first-screen understanding, compression, progressive disclosure, and removable material.
+9. Define SEO topics, intent, semantic relationships, URL direction, headings, metadata direction, and internal links without keyword stuffing.
+10. Assess visual communication needs and record justified opportunities or explicit no-asset decisions.
+11. Produce a standalone UX/UI handoff containing implementation-relevant decisions and clearly delegated freedoms.
 
 For every major page, define:
 
 - Purpose, audience, user question, business goal, and search intent
-- Primary and secondary CTA
+- Primary and secondary conversion actions
 - Ordered sections and each section's job
-- Key message and required supporting information
-- Proof and objections addressed
-- SEO role, target topic, and internal links
+- Key message, content requirements, proof, and objections
+- SEO role, topic direction, and internal links
 - Content priority and mobile treatment
-- Iran/Persian requirements and international differences
-- Dependencies, unknowns, and research needs
+- Locale behavior and Persian/RTL constraints when relevant
+- Visual communication need, potential asset category, source/evidence requirement, priority, and text-only fallback
+- Dependencies, unknowns, and validation needs
 
-Use the exact schemas in [deliverable-template.md](references/deliverable-template.md). Scale the depth to the project; do not generate empty boilerplate for irrelevant fields.
+Use the schemas in [deliverable-template.md](references/deliverable-template.md). Scale the output to the project and omit irrelevant fields rather than filling them with boilerplate.
 
-## Phase 6: pass the quality gate
+## Assess visual communication without designing it
 
-Before labeling the work final, verify:
+For each relevant page or section, ask:
 
-- The primary market and users are explicit and evidence status is visible.
-- Iranian context is product-specific rather than stereotyped.
-- Persian is natural, intentional, and structurally native.
+- What must the user understand, believe, compare, verify, or orient around?
+- Can text communicate it sufficiently?
+- Would a demonstration, diagram, screenshot, data view, comparison, photograph, or other non-text asset materially improve understanding or proof?
+- What verified source material is required?
+- Can the requirement be satisfied without an image?
+
+Record the communication requirement and a potential asset category, not a final design. Do not decide aesthetic style, photography versus illustration treatment, color, composition, exact placement, dimensions, banner design, or final asset selection. The downstream design agent may decide that no asset is needed.
+
+## Keep ownership boundaries explicit
+
+Own:
+
+- Content strategy, positioning, messaging, public-site information architecture, page/section purpose, conversion content, SEO, trust, localization, content priorities, and visual communication requirements
+
+Do not own:
+
+- Complete production copy unless requested
+- Detailed interaction behavior, task states, validation, or recovery
+- Final UI structure, layout, component choice, visual direction, or asset selection
+- Software architecture, database design, authorization implementation, or analytics instrumentation design
+
+## Pass the quality gate
+
+Before labeling work final, verify:
+
+- Scope, audience, market, evidence status, and primary conversion are explicit.
 - Every major page and section has a defensible job.
-- Conversion hierarchy does not overpower clarity or trust.
-- SEO is integrated and unsupported metrics are absent.
-- Shared, translated, rewritten, market-specific, and omitted content are distinguished.
-- Mobile hierarchy is explicit enough to design without inventing priorities.
-- UX Design Input contains page, section, CTA, trust, mobile, localization, SEO, and dependency constraints.
-- Critical contradictions and unknowns are resolved.
+- Positioning, trust, conversion, SEO, and localization do not contradict one another.
+- Persian content is native and RTL constraints are actionable when relevant.
+- Mobile priorities are explicit enough for downstream design.
+- Visual opportunities are justified by communication needs; unnecessary imagery is absent.
+- Every potential asset includes a source/evidence requirement and text-only fallback when relevant.
+- UX/UI handoff includes fixed decisions, downstream freedoms, dependencies, unknowns, and validation needs.
+- The skill has not absorbed detailed UX-flow or visual-design ownership.
 
-If a critical input remains unresolved, return to discovery or label the deliverable `Provisional`. Never call it final.
+If a critical input remains unresolved, return to discovery or label the specification `Provisional`.
 
-## Copywriting boundary
+## Handle copy requests
 
-Default to strategy, architecture, and hierarchy. Do not write complete production copy unless the user explicitly requests it.
+Default to copy requirements, message hierarchy, proof, tone, and acceptance criteria. When full copy is authorized, write it only after the relevant architecture is stable. Preserve intent and effect across languages rather than translating word for word.
 
-When copy is requested, write only after the relevant architecture is approved. Draft in this order: headlines, subheadings, body, CTA, microcopy. Preserve meaning, intent, positioning, and emotional effect across languages; do not translate word for word.
+## Communicate clearly
 
-## Interaction style
-
-- Keep discovery short, precise, structured, and non-repetitive.
-- Respond in Persian when the user writes Persian or requests Persian; otherwise follow the user's language.
-- Use natural Persian terminology, with English terms in parentheses only when they improve precision.
-- Keep final architecture detailed enough for UX and implementation, but remove explanatory filler.
+- Match the user's language; use Persian when the user writes Persian or requests it.
+- Use natural Persian terminology and add English terms only when they improve precision.
+- Explain design choices in plain language without expecting the user to supply design jargon.
+- Keep outputs detailed enough for independent UX work and concise enough to remain operational.

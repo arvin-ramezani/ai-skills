@@ -1,31 +1,33 @@
-# Content Architecture Deliverable
+# Website Content Architecture Deliverable
 
-Use these schemas for provisional and final outputs. Omit irrelevant fields rather than filling them with generic text.
+Use only the sections needed by the project. Omit irrelevant fields instead of generating filler.
 
 ## Contents
 
-1. Status and evidence
+1. Status and decision basis
 2. Executive content strategy
-3. Market and localization strategy
-4. Information architecture
-5. Journey map
+3. Market and localization model
+4. Sitemap and navigation
+5. Decision journeys
 6. Page architecture
 7. SEO architecture
-8. Mobile content strategy
-9. UX Design Input
-10. Quality gate
+8. Mobile priorities
+9. Visual communication requirements
+10. UX/UI handoff
+11. Quality gate
 
-## 1. Status and evidence
+## 1. Status and decision basis
 
 Start with:
 
 - Status: `Provisional` or `Final`
-- Scope and version/date
-- Confirmed inputs
+- Scope, version, and date
+- Confirmed facts and supplied evidence
+- Research findings with citations
 - Assumptions and hypotheses
-- Decisions made
+- Decisions and rationale
 - Critical unknowns or contradictions
-- Research completed and research required
+- Research or validation still required
 
 Do not label the architecture final while critical unknowns remain.
 
@@ -34,61 +36,55 @@ Do not label the architecture final while critical unknowns remain.
 Define concisely:
 
 - Primary and secondary markets
-- Primary user and secondary segments
-- Core problem and desired outcome
-- Core value proposition and positioning
-- Differentiation
+- Primary audience and meaningful secondary segments
+- Core problem, desired outcome, and decision context
+- Positioning and value proposition
+- Differentiation and prohibited claims
 - Primary and secondary conversions
 - Messaging pillars
-- Brand voice and editorial principles
-- Content exclusions or guardrails
+- Brand voice and editorial rules
+- Trust and proof strategy
+- Content exclusions and governance constraints
 - Success signals and measurement dependencies
 
-## 3. Market and localization strategy
+## 3. Market and localization model
 
-Use one row per significant dimension:
+Choose `Shared`, `Localized`, or `Market-specific`, then justify the choice.
 
-| Dimension | Iran / Persian | International / English | Relationship | Evidence or rationale |
+| Dimension | Primary market/language | Secondary market/language | Relationship | Evidence or rationale |
 | --- | --- | --- | --- | --- |
 | Audience | | | Shared / localized / market-specific | |
 | Positioning | | | | |
-| Value proposition | | | | |
 | Terminology | | | | |
 | Proof and trust | | | | |
 | Objections | | | | |
-| CTA and conversion | | | | |
-| SEO intent | | | | |
+| Conversion | | | | |
+| Search intent | | | | |
 | Support/transaction context | | | | |
 
-State the chosen architecture model: `Shared`, `Localized`, or `Market-specific`.
+Classify content as `Shared`, `Translated`, `Rewritten`, `Market-specific`, or `Omitted` where locale behavior matters.
 
-## 4. Information architecture
+## 4. Sitemap and navigation
 
-Provide:
+Provide only the relevant artifacts:
 
-- Sitemap or page inventory
-- Primary and secondary navigation
-- Footer or utility navigation when relevant
-- Content groups and parent-child relationships
-- Entry pages and destination pages
-- Cross-links and contextual pathways
-- Authenticated versus public boundaries when relevant
+- Page inventory or sitemap
+- Primary, secondary, utility, and footer navigation
+- Parent-child and cross-link relationships
+- Entry pages and decision destinations
+- Public versus authenticated boundaries
 
-For exact page mappings, use a table:
-
-| ID | Page | Purpose | Audience | Primary intent | Conversion role | Parent / entry | Locale behavior |
+| ID | Page | Purpose | Audience | Primary intent | Conversion role | Parent/entry | Locale behavior |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Use a compact Mermaid flow only when three or more branches or dependent steps are materially clearer than a table.
+Use Mermaid only when branching relationships are materially clearer than a table.
 
-## 5. Journey map
+## 5. Decision journeys
 
-For each primary journey:
-
-| Stage | User question or task | Entry/context | Required content | Trust or objection | CTA/next step | Failure or exit path |
+| Stage | User question | Entry/context | Required content | Proof or objection | Next action | Exit/failure path |
 | --- | --- | --- | --- | --- | --- | --- |
 
-Distinguish journeys by segment or market when they materially diverge.
+Separate journeys only when audience, market, or offer differences change the decision path.
 
 ## 6. Page architecture
 
@@ -103,98 +99,113 @@ Create one block per major page.
 | Main user question | |
 | Search intent | |
 | Business goal | |
-| Primary CTA | |
-| Secondary CTA | |
+| Primary conversion | |
+| Secondary conversion | |
 | Key message | |
-| Proof/trust | |
+| Required proof/trust | |
 | Objections | |
 | SEO role/topic | |
 | Internal links | |
-| Iran/Persian | |
-| International/English | |
+| Locale behavior | |
 | Dependencies/unknowns | |
 
 Then define ordered sections:
 
-| Order | Section | Job to be done | Required content | Priority | Mobile treatment | Locale behavior |
+| Order | Section | Communication job | Required content | Priority | Mobile treatment | Locale behavior |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | | | | Critical / Important / Supporting / Optional | Keep / compress / disclose / move / remove | Shared / translated / rewritten / market-specific / omitted |
 
-Do not prescribe component type, visual styling, animation, or layout unless a content constraint requires it.
+Do not prescribe component type, visual styling, animation, or exact layout unless a content constraint makes it necessary.
 
 ## 7. SEO architecture
 
-| Page/topic | Market/language | Intent | Primary topic direction | Semantic support | Internal links | Metadata direction | Evidence status |
+| Page/topic | Market/language | Intent | Topic direction | Semantic support | Internal links | Metadata direction | Evidence status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Also define:
+Also define relevant topic clusters, gaps, overlap risks, URL/localization direction, structured-data opportunities, and research requirements. Do not invent quantitative metrics.
 
-- Topic clusters and content gaps
-- Page overlap or cannibalization risks
-- URL direction and localization requirements
-- Structured-data opportunities as recommendations, not guarantees
-- Research requirements for unavailable metrics
-
-## 8. Mobile content strategy
+## 8. Mobile priorities
 
 Define by page or journey:
 
-- First-screen user understanding
+- First-screen understanding
 - First-screen proof or trust
-- Primary CTA visibility and commitment level
+- Primary action visibility and commitment level
 - Content moved higher or lower
 - Content compressed or progressively disclosed
 - Content removable without decision loss
 - Long Persian label and mixed-direction risks
 - Slow-connection or device constraints only when evidenced
 
-## 9. UX Design Input
+## 9. Visual communication requirements
 
-End with a standalone handoff that the UX/UI process can consume directly:
+Include both justified opportunities and significant no-asset decisions.
 
-### Users and journeys
+| Area | Communication need | Text sufficient? | Potential asset category | Evidence/source required | Text-only fallback | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| | Understand / demonstrate / prove / compare / explain / orient | Yes / No / Uncertain | Screenshot / diagram / data view / comparison / photograph / video / none | | | Critical / Important / Supporting / Optional |
 
-- Primary user priorities
-- Primary tasks and decision sequence
-- Entry, success, failure, and recovery paths
+For each non-text opportunity, state why it could materially improve comprehension or trust. Do not specify aesthetics, composition, exact placement, dimensions, or final asset choice.
 
-### Hierarchy
+## 10. UX/UI handoff
 
-- Page hierarchy
-- Section hierarchy
-- Content priorities
-- CTA hierarchy
-- Trust hierarchy
+End with a standalone handoff.
+
+### Users and decisions
+
+- Primary audience priorities
+- Decision sequence and content questions
+- Entry, conversion, exit, and failure contexts
+
+### Fixed content decisions
+
+- Page and section hierarchy
+- Content, conversion, trust, and SEO priorities
+- Required terminology and locale behavior
+- Mandatory dependencies and proof
+
+### Visual communication brief
+
+- Communication needs and potential asset categories
+- Required source material or evidence
+- Areas where text is sufficient or no asset is recommended
+- Confirmation that final asset and presentation decisions remain downstream
 
 ### Constraints
 
 - Mobile priorities
 - Persian/RTL and mixed-direction constraints
 - Localization and market divergence
-- SEO and internal-link constraints
 - Accessibility-sensitive content
-- Required content dependencies and unresolved decisions
+- Dependencies, unknowns, and validation work
 
-### UX freedom
+### Downstream freedom
 
 - Content order that must remain fixed
 - Content that may be grouped, collapsed, or rearranged
 - Optional material that may be removed
-- Visual and interaction decisions intentionally left to UX/UI
+- Visual and interaction decisions intentionally delegated
 
-## 10. Quality gate
+### Next-stage ownership
+
+- `ux-flow-designer`: detailed flows, states, validation, recovery, and interaction behavior
+- Visual/UI specialist: visual direction, layout, components, asset selection, and design system
+- Engineering: implementation architecture and instrumentation
+
+## 11. Quality gate
 
 Report each as `Pass`, `Needs validation`, or `Blocked`:
 
-- Market and audience definition
-- Evidence/assumption separation
-- Positioning and conversion logic
-- Sitemap and journey coherence
+- Scope, audience, evidence, and conversion definition
+- Positioning and message hierarchy
+- Sitemap, navigation, and journey coherence
 - Page and section justification
-- Persian-native content decisions
-- International/localization model
+- Trust and proof requirements
+- Persian-native and localization decisions
 - SEO architecture
 - Mobile hierarchy
-- UX handoff completeness
+- Visual communication assessment
+- UX/UI handoff completeness
+- Ownership-boundary compliance
 
-List only material unresolved risks after the gate.
+List only material unresolved risks.
