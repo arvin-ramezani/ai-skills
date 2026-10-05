@@ -13,8 +13,7 @@ Keep asking: **What regression would this test catch?** If there is no meaningfu
 
 If integration or E2E scope touches a persistent database, this section is **non-optional**.
 
-Before planning, implementing, or running those tests, read and follow:
-`references/database-testing.md`
+Before planning, implementing, or running those tests, read and follow the mandatory [database testing safety and isolation rules](references/database-testing.md).
 
 At minimum:
 
