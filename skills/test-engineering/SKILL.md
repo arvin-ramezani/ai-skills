@@ -216,6 +216,9 @@ Do not:
 - create unrealistic mocks that cannot fail like the real dependency;
 - test framework or library behavior;
 - introduce a new framework because it is popular;
+- run database-backed automated tests without a dedicated test database/test configuration;
+- run destructive database cleanup when the target has not been proven to be a test database;
+- depend on leftover database state, previous test order, or cleanup from a prior failed run;
 - pursue 100% coverage blindly.
 
 ## Final report
@@ -227,8 +230,9 @@ After implementation, report concisely:
 3. files created or modified;
 4. tools and commands actually used;
 5. execution and coverage results, if measured;
-6. removed, moved, merged, or consolidated tests;
-7. remaining meaningful gaps or blockers;
-8. next steps only when necessary.
+6. database target/isolation/reset/seed strategy when database-backed tests were used;
+7. removed, moved, merged, or consolidated tests;
+8. remaining meaningful gaps or blockers;
+9. next steps only when necessary.
 
 Do not use raw test counts as the primary success metric.
