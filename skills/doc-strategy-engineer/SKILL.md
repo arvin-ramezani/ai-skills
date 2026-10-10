@@ -1,11 +1,23 @@
 ---
 name: doc-strategy-engineer
-description: Design, audit, bootstrap, retrofit, and maintain context-efficient project documentation and optional long-term AI-agent memory for software development. Use when documenting a feature or behavior, choosing canonical document placement, creating or restructuring a docs system, improving AGENTS.md or tool-adapter routing on already-started projects, fixing undiscoverable existing docs, onboarding to an undocumented repository, adding cross-session coding-agent memory, capturing decisions or lessons from agent sessions, resolving documentation conflicts or drift, planning documentation for a monorepo, or syncing docs after code changes. Also use for AI-readable documentation architecture, Feature Analysis (FA), documentation context budgets, or Cursor/coding-agent documentation and memory strategy. Do not use for grammar-only edits with no structural, authority, placement, or memory impact.
+description: Plan documentation strategy, write feature/behavior specifications and Feature Analysis (FA), synchronize documentation with code, and design optional cross-session agent memory for software projects. Use for feature docs, content ownership proposals, monorepo knowledge strategy, and memory workflows. For repository routing/structure audits, canonical documentation restructuring, and document-splitting policy, use context-engineering when available. Do not use for grammar-only edits.
 ---
 
 # Documentation Strategy Engineer
 
 Treat documentation as a context system, not a collection of Markdown files. Create the smallest structure that gives humans and agents the right authoritative information at the right time.
+
+## Skill boundary and delegation
+
+Use `context-engineering` as the source of truth for repository documentation
+routing/index maintenance, structural audits, line review, splitting/moving rules,
+and preservation evidence. This skill owns feature and content authoring,
+documentation strategy proposals, and optional agent-memory lifecycle.
+For a mixed request, use this skill for the content task and apply
+`context-engineering` for structural changes; do not invent conflicting approval
+rules. If it is not installed, follow the repository's context policy and the
+same safeguards: preserve original requirements and seek owner decisions only
+for actual scope, meaning, or destructive-change risks.
 
 ## Route the request
 
@@ -187,6 +199,10 @@ Evaluate the implemented strategy against [references/health-and-maintenance.md]
 
 ## Control document growth
 
+Apply `context-engineering` review thresholds and split/KEEP policy when available;
+the following content-design heuristics must not override its structural rules.
+No approval is needed solely because an authorized migration touches many files.
+
 Assign every substantial document a purpose, audience, scope, authority, status, read frequency, and context budget—explicitly in metadata when useful, otherwise as a design decision.
 
 Treat line budgets as heuristics, not correctness rules. When a document exceeds its soft maximum:
@@ -200,17 +216,24 @@ Never split mechanically by page count. Never keep a frequently loaded routing f
 
 ## Mutation boundaries
 
-Apply without another approval when the user requested the exact write, including a feature document, bootstrap, retrofit routing/index/link repair, or index entry.
+Apply without another approval when the user authorized the documentation work,
+including feature documents, bootstrap, routing/index repair, and justified
+structural splits/moves within scope. Follow `context-engineering` for review,
+preservation mapping, navigation repair, and verification. There is **no
+file-count approval threshold**. Moving text without changing its accepted
+meaning/authority is a structural task, not automatically a product decision.
 
 Ask before:
 
-- deleting or archiving substantive documents;
-- changing canonical ownership or the overall architecture;
-- merging/splitting or relocating more than three existing files;
+- deleting/archiving substantive content beyond authorized scope or without
+  a recoverable baseline and explicit content accounting;
+- changing accepted meaning, resolving an ambiguous canonical owner, or
+  redesigning documentation architecture beyond the requested scope;
 - declaring an unresolved business rule, security contract, or architecture decision;
-- rewriting large existing documents beyond the stated request.
+- rewriting substantive documents beyond the stated request.
 
-Preserve unrelated user changes. Do not change application code unless requested.
+Preserve unrelated user changes. Do not change application code or merge a PR
+unless separately authorized.
 
 ## Validate and report
 

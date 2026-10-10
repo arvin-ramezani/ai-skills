@@ -1,12 +1,24 @@
 ---
 name: context-engineering
-description: Establish, audit, and restructure repository documentation for coding agents. Use for documentation architecture, canonical-source conflicts, or reviewing and splitting large documents.
+description: Govern repository documentation structure, agent routing, and preservation. Use for documentation audits, canonical-source conflicts, large-file review and splitting, or maintenance of indexes and context policy. This skill owns structural migration and splitting approval rules; use doc-strategy-engineer for feature-document authoring and agent-memory strategy.
 ---
 
 # Context Engineering
 
 Build task-relevant, indexed repository knowledge that survives agent sessions.
 Perform the review and justified restructuring; produce evidence another agent can inspect.
+
+## Skill ownership
+
+This skill is the source of truth for documentation review thresholds, routing,
+structural reorganization and splitting permissions, and preservation verification.
+Use `doc-strategy-engineer` for feature/FA authoring, documentation strategy proposals,
+and cross-session memory when installed. In mixed tasks, apply this skill's
+structural rules while the other skill owns the content-specific workflow.
+Do not use file count as an approval trigger. Within an authorized documentation
+improvement, perform justified splits/moves regardless of count, with preservation
+evidence. Escalate only out-of-scope changes, unrecoverable destructive changes,
+or unresolved product, security, architecture, or accepted-contract decisions.
 
 ## Select the workflow
 

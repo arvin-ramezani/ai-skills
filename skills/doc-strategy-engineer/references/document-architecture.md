@@ -141,4 +141,4 @@ Do not require every document to link to code and tests. Product narratives and 
 5. Migrate high-risk misleading content first, then routing, then cleanup.
 6. Update indexes and links in the same change.
 7. Preserve history through version control; avoid permanent archive trees unless readers need old versions.
-8. Obtain approval before deletions or broad relocations.
+8. For authorized structural relocation, follow the `context-engineering` policy: preserve all content, repair links, and verify the migration without a file-count approval checkpoint. Seek approval for out-of-scope deletion, ambiguous accepted authority, or material contract changes.
