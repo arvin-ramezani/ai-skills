@@ -18,6 +18,14 @@ Designs, audits, bootstraps, retrofits, and maintains context-efficient project 
 
 Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
 
+### Context Engineering
+
+Establishes, audits, and restructures repository documentation for coding agents. It reviews documents over 150 lines, performs justified splits, preserves requirements through a before/after content map, and produces an auditable handoff. The line thresholds are review conventions rather than hard limits.
+
+Location: [`skills/context-engineering`](skills/context-engineering)
+
+Install with `python scripts/install_skill.py context-engineering --project "D:\path\to\project"` or package with `python scripts/package_skill.py context-engineering`.
+
 ### Content Strategy & Architecture
 
 Designs evidence-led content strategy, public-site information architecture, conversion and SEO structure, localization, visual communication requirements, and UX/UI handoffs for content-driven experiences.
@@ -133,6 +141,7 @@ skills/
     OUTPUT-TEMPLATE.md
     INSTALL.md
   doc-strategy-engineer/
+  context-engineering/
   content-strategy-architecture/
   product-information-architecture/
   ux-flow-designer/
