@@ -195,7 +195,7 @@ Evaluate the implemented strategy against [references/health-and-maintenance.md]
 3. Propose `update`, `create`, `archive/delete`, or `no action` for each impacted doc.
 4. Prefer `no action` when meaning and contracts did not change.
 5. If memory is enabled, promote validated durable findings to canonical docs and keep session summaries operational rather than authoritative.
-6. Apply small requested updates; ask before deletion, broad restructuring, or unresolved contract choices.
+6. Apply requested updates and justified restructuring within authorized scope without an extra approval checkpoint; use `context-engineering` for preservation and verification. Ask only for out-of-scope or destructive changes, or unresolved owner decisions about accepted contracts.
 
 ## Control document growth
 

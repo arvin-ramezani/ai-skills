@@ -13,6 +13,8 @@ These are expected behavior cases, not evidence of a model evaluation run.
 | Write feature docs and reorganize scattered canonical docs | `doc-strategy-engineer` for content, `context-engineering` for structure | Complete authorized structural changes with preservation evidence; no arbitrary file-count stop |
 | Splitting exposes conflicting accepted security requirements | `context-engineering` | Preserve both, request owner decision on meaning, complete unaffected structural work |
 | User requests moving docs outside stated scope | Whichever is primary | Escalate scope change; do not assume permission to rewrite unrelated docs |
+| Sync code changes and reorganize eight related docs within explicitly authorized scope | `doc-strategy-engineer` for sync, `context-engineering` for structure | Perform justified restructuring and preservation checks without broad-restructure approval |
+| Migration finds contradictory accepted security rules but other docs are unaffected | `context-engineering` | Preserve disputed evidence, escalate contract decision, finish unaffected authorized moves |
 
 Evaluation gate: confirm the selected skill(s), authorized changes, preserved units,
 owner-decision boundaries, and reported verification. A line threshold triggers
