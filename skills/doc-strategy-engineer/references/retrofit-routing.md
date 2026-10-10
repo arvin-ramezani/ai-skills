@@ -69,4 +69,4 @@ Severity: undiscoverable **accepted** contracts or safety rules → High/Critica
 
 ## Mutation boundaries
 
-Same as the skill: apply small routing/index/link repairs when the user asked to improve docs or retrofit. Ask before deleting docs, changing overall architecture, or relocating more than three files.
+For an authorized retrofit, apply routing/index/link repairs and justified structural moves without a file-count approval threshold. Follow the `context-engineering` preservation and verification rules when installed. Seek approval only for substantive deletion beyond scope, unresolved accepted meaning/authority, overall architecture changes outside the task, or other genuine owner decisions.

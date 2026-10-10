@@ -135,10 +135,10 @@ Do not require every document to link to code and tests. Product narratives and 
 ## Migration rules
 
 1. Inventory canonical candidates and inbound links.
-2. Resolve contradictions before moving content.
+2. Identify and preserve contradictory evidence without changing accepted meaning. Escalate genuine owner decisions affecting disputed content; continue unrelated, authorized migration.
 3. For already-started projects, fix undiscoverable-existing facts via thin adapters/indexes before rewriting or relocating trees ([retrofit-routing.md](retrofit-routing.md)).
 4. Choose the future owner for each knowledge item.
 5. Migrate high-risk misleading content first, then routing, then cleanup.
 6. Update indexes and links in the same change.
 7. Preserve history through version control; avoid permanent archive trees unless readers need old versions.
-8. Obtain approval before deletions or broad relocations.
+8. For authorized structural relocation, follow the `context-engineering` policy: preserve all content, repair links, and verify the migration without a file-count approval checkpoint. Seek approval for out-of-scope deletion, ambiguous accepted authority, or material contract changes.

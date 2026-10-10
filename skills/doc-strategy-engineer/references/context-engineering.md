@@ -1,6 +1,6 @@
 # Context Engineering Model
 
-Use this reference to design context flow, document metadata, and size budgets. Treat the values as starting heuristics, not universal limits.
+Use this reference to design context flow, document metadata, and size budgets. Treat the values as starting heuristics, not universal limits. When available, `context-engineering` governs documentation size-review triggers, KEEP/SPLIT decisions, automatic authorized structural migrations, and preservation verification. The table below is for initial content planning, not approval or a competing split threshold.
 
 ## Contents
 

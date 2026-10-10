@@ -14,9 +14,19 @@ Install guide: [`skills/software-architecture-advisor/INSTALL.md`](skills/softwa
 
 ### Documentation Strategy Engineer
 
-Designs, audits, bootstraps, retrofits, and maintains context-efficient project documentation for AI-assisted development.
+Plans documentation strategy, authors feature analyses/specifications, handles documentation-to-code synchronization, and designs optional cross-session agent memory. For repository-wide documentation structure and splitting rules, use Context Engineering.
 
 Location: [`skills/doc-strategy-engineer`](skills/doc-strategy-engineer)
+
+### Context Engineering
+
+**Source of truth for repository documentation structure and document-splitting policy.** Establishes routing/indexes, audits retrieval and authority, and executes justified structural migrations with a preservation map. Documents over 150 lines trigger review, not automatic splitting; the line thresholds are local conventions, not hard limits.
+
+Location: [`skills/context-engineering`](skills/context-engineering)
+
+Use **Context Engineering** for large-document review/splitting, index/routing repair, and structure audits; use **Documentation Strategy Engineer** for feature documentation, documentation strategy proposals, and agent-memory lifecycle. For mixed tasks, use the latter to author content and the former's structural policy and preservation workflow for any restructuring. A justified in-scope split needs no extra approval based on file count; owner decisions about changed meaning, security/product/architecture, or scope expansion still require approval.
+
+Install with `python scripts/install_skill.py context-engineering --project "D:\path\to\project"` or package with `python scripts/package_skill.py context-engineering`.
 
 ### Content Strategy & Architecture
 
@@ -133,6 +143,7 @@ skills/
     OUTPUT-TEMPLATE.md
     INSTALL.md
   doc-strategy-engineer/
+  context-engineering/
   content-strategy-architecture/
   product-information-architecture/
   ux-flow-designer/
