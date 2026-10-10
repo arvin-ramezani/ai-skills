@@ -87,6 +87,23 @@ class MarkdownVisibilityTests(unittest.TestCase):
                                  [(len(text.splitlines()), "real.md")])
 
 
+class NormalizeLabelTests(unittest.TestCase):
+    def test_normalizes_unicode_case_and_whitespace_boundaries(self):
+        self.assertEqual(SCANNER.normalize_label("\u2003Straße\t\n"), "strasse")
+
+    def test_empty_and_whitespace_only_labels_normalize_to_empty(self):
+        for label in ("", " \t\n\u2003"):
+            with self.subTest(label=repr(label)):
+                self.assertEqual(SCANNER.normalize_label(label), "")
+
+    def test_non_string_labels_are_rejected(self):
+        cases = ((None, AttributeError), (b"label", TypeError), (42, AttributeError))
+        for label, error in cases:
+            with self.subTest(label=repr(label)):
+                with self.assertRaises(error):
+                    SCANNER.normalize_label(label)
+
+
 class ScannerCommandTests(unittest.TestCase):
     def test_check_ignores_examples_but_rejects_real_broken_links(self):
         with tempfile.TemporaryDirectory() as directory:
