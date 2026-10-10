@@ -18,21 +18,83 @@ from urllib.parse import unquote, urlsplit
 PRUNED = {".git", "node_modules", ".next", ".venv", "__pycache__"}
 
 
-def visible_markdown(content):
-    """Mask fenced blocks while preserving line numbers."""
-    result, fence = [], None
-    for line in content.splitlines(keepends=True):
-        opening = re.match(r" {0,3}(`{3,}|~{3,})", line)
-        if fence:
-            if re.fullmatch(r" {0,3}" + re.escape(fence[0]) +
-                            r"{" + str(len(fence)) + r",}\s*", line):
-                fence = None
-            result.append("\n" if line.endswith("\n") else "")
-        elif opening:
-            fence = opening.group(1)
-            result.append("\n" if line.endswith("\n") else "")
-        else:
-            result.append(line)
+def visible_markdown(content, *, mask_inline=False):
+    """Mask common code examples and comments without moving source positions.
+
+    Process constructs in source order: a comment marker in code is literal,
+    and a fence inside a comment cannot open a code block. This is a lightweight
+    scanner for top-level Markdown, not a complete CommonMark block parser.
+    """
+    result = list(content)
+
+    def mask(start, end):
+        for position in range(start, end):
+            if content[position] not in "\r\n":
+                result[position] = " "
+
+    position, fence, indented, paragraph = 0, None, False, False
+    while position < len(content):
+        if position == 0 or content[position - 1] == "\n":
+            end = content.find("\n", position)
+            end = len(content) if end == -1 else end + 1
+            line = content[position:end]
+            if fence:
+                if re.fullmatch(r" {0,3}" + re.escape(fence[0]) +
+                                r"{" + str(len(fence)) + r",}\s*", line):
+                    fence = None
+                mask(position, end)
+                position = end
+                continue
+            is_indented = line.expandtabs(4).startswith("    ")
+            if (indented and (is_indented or not line.strip()) or
+                    is_indented and not paragraph):
+                indented, paragraph = True, False
+                mask(position, end)
+                position = end
+                continue
+            indented = False
+            opening = re.match(r" {0,3}(`{3,}|~{3,})(.*)", line)
+            if opening and not (opening[1][0] == "`" and "`" in opening[2]):
+                fence, paragraph = opening[1], False
+                mask(position, end)
+                position = end
+                continue
+            paragraph = bool(line.strip()) and not re.match(
+                r" {0,3}(?:#{1,6}(?:[ \t]|$)|(?:[*_-][ \t]*){3,}$)", line)
+
+        if content[position] == "\\":
+            # Escaped backticks/comment openers are ordinary text.
+            position += 2 if position + 1 < len(content) else 1
+            continue
+        if content.startswith("<!--", position):
+            close = content.find("-->", position + 4)
+            end = len(content) if close == -1 else close + 3
+            line_start = content.rfind("\n", 0, position) + 1
+            line_end = content.find("\n", end)
+            line_end = len(content) if line_end == -1 else line_end
+            if (not content[line_start:position].strip() and
+                    not content[end:line_end].strip()):
+                paragraph = False
+            mask(position, end)
+            position = end
+            continue
+        if content[position] == "`":
+            run = re.match(r"`+", content[position:])[0]
+            start = position + len(run)
+            # Inline code may cross lines, but cannot cross a paragraph/block.
+            boundary = re.search(r"\n[ \t]*\n|\n {0,3}(?:`{3,}|~{3,})", content[start:])
+            limit = start + boundary.start() if boundary else len(content)
+            close = re.search(r"(?<!`)" + re.escape(run) + r"(?!`)",
+                              content[start:limit])
+            if close:
+                end = start + close.end()
+                if mask_inline:
+                    mask(position, end)
+                position = end
+            else:
+                position = start
+            continue
+        position += 1
     return "".join(result)
 
 
@@ -68,8 +130,7 @@ def normalize_label(label):
 
 
 def markdown_links(text):
-    text = re.sub(r"(`+)(.*?)\1", lambda m: "\n" * m.group().count("\n"),
-                  text, flags=re.DOTALL)
+    text = visible_markdown(text, mask_inline=True)
     definitions = {}
     for match in re.finditer(r"(?m)^ {0,3}\[([^\]\n]+)\]:[ \t]*", text):
         target = destination(text, match.end())
@@ -139,7 +200,7 @@ def inspect(root, doc_roots, entries, exclusions, threshold):
         metadata = {m.group(1).lower(): m.group(2).strip()
                     for m in re.finditer(r"(?mi)^(Status|Authority):[ \t]*(.*)$", intro)}
         edges[rel] = set()
-        for line, target in markdown_links(visible):
+        for line, target in markdown_links(content):
             parsed = urlsplit(target)
             if parsed.scheme or parsed.netloc:
                 continue
@@ -182,6 +243,7 @@ def inspect(root, doc_roots, entries, exclusions, threshold):
             "skipped_symlink_directories": sorted(d for d in skipped_dirs if not any(
                 fnmatch.fnmatch(d, p) or fnmatch.fnmatch(d + "/", p) for p in exclusions)),
             "limitations": ["Common Markdown file links only; HTML and generated routing excluded.",
+                            "Code/comment masking covers top-level constructs; nested list/blockquote parsing is not supported.",
                             "Fragment anchors and setext headings are not checked.",
                             "Symlink directories and standard dependency directories are not scanned.",
                             "Counts and hashes do not prove semantic equivalence or implementation freshness."]}
