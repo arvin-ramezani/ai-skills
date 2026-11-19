@@ -60,6 +60,12 @@ Designs, implements, reviews, and maintains lean risk-based automated test suite
 
 Location: [`skills/test-engineering`](skills/test-engineering)
 
+### Codex Orchestration
+
+Prepares task-specific orchestration prompts and coordinates authorized Codex sessions and subagents, with guidance for dependencies, shared state, recovery, and software delivery gates.
+
+Location: [`skills/codex-orchestration`](skills/codex-orchestration)
+
 ## Distribution model
 
 `skills/<skill-name>/` is the catalog/source layout. Each skill is a portable, self-contained package with `SKILL.md` and its direct references.
