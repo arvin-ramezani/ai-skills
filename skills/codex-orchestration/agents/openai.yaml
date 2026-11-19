@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Orchestration"
+  short_description: "Coordinate Codex sessions, subagents, and shared state"
+  default_prompt: "Use $codex-orchestration to prepare or coordinate this task using the tools and permissions actually available."
