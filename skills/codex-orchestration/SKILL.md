@@ -1,6 +1,6 @@
 ---
 name: codex-orchestration
-description: Prepare task-specific orchestration prompts or coordinate authorized work using ChatGPT and native Codex sessions and subagents. Use for fresh-chat setup, delegation, cross-session communication, waiting for results, shared working state, recovery, and improving orchestration conventions. Supports normal ChatGPT chats through manual handoffs when execution tools are absent. Do not execute an illustrative task while creating or updating this skill.
+description: Act as the orchestration engineer for software implementation. On explicit invocation, coordinate planning, code, tests, verification, code review, and security review with native subagents by default. Also supports orchestration design, manual handoffs, and skill updates.
 ---
 
 # Codex orchestration
@@ -9,23 +9,31 @@ description: Prepare task-specific orchestration prompts or coordinate authorize
 
 Default to Codex in the desktop app, the user's usual environment. Also support Codex web/cloud, CLI, and normal ChatGPT chats. Adapt to actual capabilities; do not require the user to change clients.
 
-Start with one coordinator. Add a worker only when its independent outcome justifies it. Use one compact state note when continuity is needed. Avoid mandatory role teams, elaborate approval stages, custom engines, or extra files. Read detailed references only when needed. Return one usable prompt or the requested outcome.
+Keep one coordinator and use one compact state note when continuity is needed. Use the default delivery roles for software implementation. For other work, add workers only when they have distinct outcomes.
 
 ## Establish the request
 
-Distinguish three requests before acting:
-- Design an orchestration: return prompts, roles, dependencies, and handoffs.
-- Execute an orchestration: coordinate only the work the user authorized.
-- Improve this skill: change reusable guidance; do not execute the example project.
+When the user invokes `$codex-orchestration` for an implementation task, become the orchestration engineer and execute the workflow below. Use the task in the current message or established chat context. If neither supplies a concrete task, ask for it. Explicit invocation with an implementation task requests native delegation for the default roles within scope. Start without asking for separate approval for each role. Implicit skill discovery alone does not authorize spawning workers.
+
+Honor design-only, plan-only, review-only, read-only, audit, and skill-edit requests as scoped. Preparing an orchestration or editing this skill never launches the example workflow. Repository rules, tool constraints, and the user's task limits govern each action.
 
 Use simple English. Prefer a coherent end-to-end outcome over splitting by file, layer, size, or time. Preserve the user's testing, review, production, and approval constraints.
 
-Read [conventions.md](references/conventions.md) for established user preferences.
+Read [conventions.md](references/conventions.md) for role ownership, opt-outs, and correction loops.
 Read [capabilities.md](references/capabilities.md) before making capability claims.
 Read [session-lifecycle.md](references/session-lifecycle.md) when starting, messaging, waiting, or resuming sessions.
 Read [shared-state.md](references/shared-state.md) when sharing context or recovering work.
 Use [prompt-patterns.md](references/prompt-patterns.md) to construct task-specific prompts.
 Use [sources.md](references/sources.md) for dated official evidence and refresh targets.
+
+## Default software delivery
+
+1. Spawn a planning agent and accept its plan and criteria before implementation starts.
+2. Spawn separate production code and test writing agents. Work in parallel when the contract is stable and edit ownership is separate.
+3. Spawn a verification agent to run authorized checks on the combined candidate. Diagnose failures before edits, route confirmed defects to the responsible writer, and have the verifier rerun affected checks after each fix.
+4. After required verification passes, spawn a read-only code reviewer, then a separate read-only security reviewer. Run both by default where allowed. Advance once an earlier gate passes or is explicitly omitted and policy allows proceeding. After a fix, reverify and send the updated candidate back to the original reviewer for that stage.
+
+Apply exclusions such as `defer security review` or `do not use a test-writing agent` before spawning. Report any mandatory gate that remains pending. Schedule agents within the available concurrency and retain their IDs for follow-ups. The main session owns coordination and integration. Workers report back to it without delegating further. See [delivery conventions](references/conventions.md#software-delivery).
 
 ## Select an execution route
 
@@ -44,7 +52,7 @@ Record goal, deliverables, exclusions, source evidence, dependencies, verificati
 
 Resolve routine implementation choices from evidence. Ask only for missing information that materially blocks safe authorized progress. Keep facts, reported observations, hypotheses, and proposals distinct.
 
-Choose the smallest useful agent set. Prefer independent read-heavy investigations in parallel. For software delivery, follow the [stage gates and parallel work rules](references/conventions.md#software-delivery). Use separate file ownership or isolated worktrees for concurrent edits and verify actual isolation.
+Use separate file ownership or verified worktree isolation for concurrent edits.
 
 ## Delegate and collect
 
@@ -54,7 +62,7 @@ For independent review, provide requirements and raw candidate artifacts rather 
 
 Register real worker/session IDs and locations. Wait through native wait tools when available. Inspect completed output and required artifacts. A timeout, queued message, idle session, progress update, or lack of errors is not proof of success.
 
-Route concrete feedback to the responsible worker; verify the new candidate afterward. Default recommendation: at most two correction/re-review cycles before surfacing a concrete unresolved blocker, unless the user specifies another bound. Do not abandon unrelated safe work.
+Route concrete feedback to the responsible worker and verify the updated candidate. Continue useful correction cycles while the evidence supports a new action. Stop on a concrete blocker or when retries stop making progress.
 
 ## Maintain state and finish
 
