@@ -15,20 +15,28 @@ Task: <goal, evidence, constraints, desired outcome>
 
 ## Main executor prompt
 
+An explicit invocation with an implementation task already requests the default roles.
+
 ```text
-Coordinate <one concrete outcome>.
+$codex-orchestration Implement <one concrete outcome>.
+```
+
+Add constraints or role exclusions as needed, for example `Defer security review.` Use the expanded form when extra context helps.
+
+```text
+$codex-orchestration Implement <one concrete outcome>.
 Sources: <requirements and accessible authoritative locations>.
 Scope: <included behavior>. Exclusions: <excluded behavior>.
 Allowed actions: <explicit scope>. Verification owner: <person/agent and limits>.
 Inspect actual tools, workspace, applicable instructions, current versions, and related work.
-Use native subagents for <authorized bounded tasks>; wait for their results before dependent work.
+Use the default delivery agents within the authorized scope and wait for each prerequisite stage.
 Use separate top-level tasks only where explicitly requested and supported.
 Keep shared state in <existing convention or minimal chosen file>.
 Assign clear edit ownership or isolated worktrees for concurrent editors.
 For software delivery, finish planning before starting production coding or test writing.
 Run code and test work in parallel only when their contract is stable and edit ownership is separate. Sequence dependent work.
-Require verification to pass on the combined code and test candidate before code review. Start required security review after code review passes on that same candidate.
-Allow <chosen correction bound> correction cycles before escalating a concrete blocker.
+Require applicable verification to pass on the combined candidate before code review. Start security review after code review passes or is explicitly omitted where policy permits. Apply any exclusion or restriction on security review.
+Diagnose verification failures before routing fixes. Reverify changes and follow up with the original reviewer for re-review. Report a blocker when the evidence no longer supports a new action.
 Do not infer approval for deployment, merging, publication, or other excluded actions.
 Finish with the outcome, exact candidate, verification, unresolved findings, and acceptance status.
 ```

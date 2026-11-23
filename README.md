@@ -62,7 +62,7 @@ Location: [`skills/test-engineering`](skills/test-engineering)
 
 ### Codex Orchestration
 
-Prepares task-specific orchestration prompts and coordinates authorized Codex sessions and subagents, with guidance for dependencies, shared state, recovery, and software delivery gates.
+Acts as the orchestration engineer for explicitly invoked software implementation tasks, coordinating planning, code, tests, verification, code review, and security review through subagents by default, with opt-outs for excluded roles.
 
 Location: [`skills/codex-orchestration`](skills/codex-orchestration)
 
